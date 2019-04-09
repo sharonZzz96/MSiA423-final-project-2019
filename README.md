@@ -40,7 +40,7 @@ o **Epic2**: Based on their background, telco and transaction information with o
 ♣ Backlog1: Understand, clean and merge different datasets –4 points (planned for the next two weeks)
 ♣ Backlog2: Engineer features to describe transaction and payment behavior –2 points (planned for the next two weeks)
 ♣ Backlog3: Analyze distributions of features generated –1 points 
-♣ Backlog4: Identify the features having strong predictive power –1 points
+♣ Backlog4: Identify the features having strong predictive power –1 points\n
 ♣ Backlog5: Build classification model to predict whether a customer will have late payment behavior –4 points
 ♣ Backlog6: Choose appropriate hyper-parameters considering both model complexity and model performance –4 points
 ♣ Backlog7: Adjust classification threshold based on the risk preference of the bank –2 points
@@ -171,5 +171,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyNDMzMjgyMl19
+eyJoaXN0b3J5IjpbNjMwMDkzMTcyXX0=
 -->
