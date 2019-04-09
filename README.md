@@ -38,7 +38,7 @@ o **Epic1**: Explore various types of customers unserved by the bank from differ
 
 ♣ Backlog4: Compare the customers based on their social surrounding data –2 points
 
-o **Epic2**: Based on their background, telco and transaction information in other financial institutions, classify customers into two groups: with payment difficulty and without payment difficulty. 
+o **Epic2**: Based on their background, telco and transaction information in other financial institutions, classify customers into two groups: with payment difficulty and without payment difficulty 
 
 ♣ Backlog1: Understand, clean and merge different datasets –4 points (planned for the next two weeks)
 
@@ -181,5 +181,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE1ODQyMDgwMl19
+eyJoaXN0b3J5IjpbNjA1NTk4MjM0XX0=
 -->
