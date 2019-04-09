@@ -3,6 +3,7 @@
 <!-- toc -->
 
 - [Project Charter](#project-charter)
+- [Backlog](#backlog)
 - [Repo structure](#repo-structure)
 - [Documentation](#documentation)
 - [Running the application](#running-the-application)
@@ -18,14 +19,22 @@
 
 ## Project Charter 
 
-**Vision**: To enable animals everywhere to enjoy music just for them. 
+**Vision**: The bank struggles to target customers with insufficient or non-existent credit histories and has a hard time to decide whether to grant loans to those customers. This project will help the bank evaluate the repayment ability of those “underserved” customers, expand the loan servicing and generate more revenue.
 
-**Mission**: Enable users to add songs that they like and produce new song recommendations based on their entries.
+**Mission**: The bank struggles to target customers with insufficient or non-existent credit histories and has a hard time to decide whether to grant loans to those customers. This project will help the bank evaluate the repayment ability of those “underserved” customers, expand the loan servicing and generate more revenue.
 
-**Success criteria**: Users play 80% of recommended songs more than once. 
+**Success criteria**: AUC, Sensitivity and Specificity of test data will be applied to measure the performance of the model. Considering the available models in the market, we will set the minimum value of test AUC as 0.70 for success.
 
+## Backlog
+**Themes**: There are distinct types of unbanked customers. Some of them have repayment capability and can contribute to the reliable source of income to the bank, and therefore not providing loan servicing for all of them will be a loss to the bank. Through this project, the bank will be able to identify high-quality customers with insufficient credit history. The bank can establish positive and safe loaning relationship with them, generate higher revenue and have more business opportunity. 
 
-_Note_: Project charters should actually be more detailed than this! But this is where the charter belongs.  
+o **Epic1**: There are various types of customers unserved by the bank due to insufficient credit information that result in different payment behavior (e.g. different risk of late payment). 
+
+	♣ Backlog1: Compare the customers with late payment and without late payment based on their individual background data –2 points (planned for the next two weeks)	♣ Backlog2: Analyze the credit behavior with Credit Bureau of different segments of the population –4 points (planned for the next two weeks)	♣ Backlog3: Analyze the previous loan applications of the customers –4 points 	♣ Backlog4: Compare the customers based on their social surrounding data –2 points
+
+o **Epic2**: Based on their background, telco and transaction information with other financial institutions, customers can be classified into two groups: with payment difficulty and without payment difficulty. 
+
+	♣ Backlog1: Understand, clean and merge different datasets –4 points (planned for the next two weeks)	♣ Backlog2: Engineer features to describe transaction and payment behavior –2 points (planned for the next two weeks)	♣ Backlog3: Analyze distributions of features generated –1 points 	♣ Backlog4: Identify the features having strong predictive power –1 points	♣ Backlog5: Build classification model to predict whether a customer will have late payment behavior –4 points	♣ Backlog6: Choose appropriate hyper-parameters considering both model complexity and model performance –4 points	♣ Backlog7: Adjust classification threshold based on the risk preference of the bank –2 points	♣ Icebox1: Calculate the expected return if the bank grants a loan with the customer
 
 ## Repo structure 
 
