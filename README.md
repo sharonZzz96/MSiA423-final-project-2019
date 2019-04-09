@@ -30,23 +30,24 @@
 
 o **Epic1**: Explore various types of customers unserved by the bank from different aspects 
 
-♣ Backlog1: Compare the customers with late payment and without late payment based on their individual background data –2 points (planned for the next two weeks)
+♣ *Backlog1*: Compare the customers with late payment and without late payment based on their individual background data –2 points (planned for the next two weeks)
 
-♣ Backlog2: Analyze the credit behavior from Credit Bureau among different segments of the population –4 points (planned for the next two weeks)
+♣ *Backlog2*: Analyze the credit behavior from Credit Bureau among different segments of the population –4 points (planned for the next two weeks)
 
-♣ Backlog3: Analyze the previous loan applications of the customers –4 points 
+♣ *Backlog3*: Analyze the previous loan applications of the customers –4 points 
 
-♣ Backlog4: Compare the customers based on their social surrounding data –2 points
+♣ *Backlog4*: Compare the customers based on their social surrounding data –2 points
+
 
 o **Epic2**: Based on their background, telco and transaction information in other financial institutions, classify customers into two groups: with payment difficulty and without payment difficulty 
 
-♣ Backlog1: Understand, clean and merge different datasets –4 points (planned for the next two weeks)
+♣ *Backlog1*: Understand, clean and merge different datasets –4 points (planned for the next two weeks)
 
-♣ Backlog2: Engineer features to describe transaction and payment behavior –2 points (planned for the next two weeks)
+♣ *Backlog2*: Engineer features to describe transaction and payment behavior –2 points (planned for the next two weeks)
 
-♣ Backlog3: Analyze distributions of features generated –1 points 
+♣ *Backlog3*: Analyze distributions of features generated –1 points 
 
-♣ Backlog4: Identify the features having strong predictive power –1 points
+♣ *Backlog4*: Identify the features having strong predictive power –1 points
 
 ♣ Backlog5: Build classification model to predict whether a customer will have late payment behavior –4 points
 
@@ -181,5 +182,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjA1NTk4MjM0XX0=
+eyJoaXN0b3J5IjpbLTEzMTU2MTY3NzYsNjA1NTk4MjM0XX0=
 -->
