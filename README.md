@@ -26,13 +26,13 @@
 **Success criteria**: AUC, Sensitivity and Specificity of test data will be applied to measure the performance of the model. Considering the available models in the market, we will set the minimum value of test AUC as 0.70 for success.
 
 ## Backlog
-**Themes**: There are distinct types of unbanked customers. Some of them have repayment capability and can contribute to the reliable source of income to the bank, and therefore not providing loan servicing for all of them will be a loss to the bank. Through this project with the , the bank will be able to identify high-quality customers with insufficient credit history. The bank can establish positive and safe loaning relationship with them, generate higher revenue and have more business opportunity. 
+**Themes**: There are distinct types of unbanked customers. Some of them have repayment capability and can contribute to the reliable source of income to the bank, and therefore not providing loan servicing for all of them will be a loss to the bank. Through this project with the customer profiling and classification model, the bank will be able to identify high-quality customers with insufficient credit history. The bank can establish positive and safe loaning relationship with them, generate higher revenue and have more business opportunity. 
 
-o **Epic1**: There are various types of customers unserved by the bank due to insufficient credit information that result in different payment behavior (e.g. different risk of late payment). 
+o **Epic1**: Explore various types of customers unserved by the bank due to insufficient credit information that result in different payment behavior (e.g. different risk of late payment)
 
 ♣ Backlog1: Compare the customers with late payment and without late payment based on their individual background data –2 points (planned for the next two weeks)
 
-♣ Backlog2: Analyze the credit behavior with Credit Bureau of different segments of the population –4 points (planned for the next two weeks)
+♣ Backlog2: Analyze the credit behavior from Credit Bureau amon different segments of the population –4 points (planned for the next two weeks)
 
 ♣ Backlog3: Analyze the previous loan applications of the customers –4 points 
 
@@ -181,5 +181,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzc5MTcxODc3LDYzMDA5MzE3Ml19
+eyJoaXN0b3J5IjpbLTE5Mjg4MTgxMTgsNjMwMDkzMTcyXX0=
 -->
