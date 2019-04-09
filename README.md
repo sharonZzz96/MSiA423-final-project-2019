@@ -28,17 +28,17 @@
 ## Backlog
 **Themes**: There are distinct types of unbanked customers. Some of them have repayment capability and can contribute to the reliable source of income to the bank, and therefore not providing loan servicing for all of them will be a loss to the bank. Through this project with the customer profiling and classification model, the bank will be able to identify high-quality customers with insufficient credit history. The bank can establish positive and safe loaning relationship with them, generate higher revenue and have more business opportunity. 
 
-o **Epic1**: Explore various types of customers unserved by the bank due to insufficient credit information that result in different payment behavior (e.g. different risk of late payment)
+o **Epic1**: Explore various types of customers unserved by the bank from different aspects 
 
 ♣ Backlog1: Compare the customers with late payment and without late payment based on their individual background data –2 points (planned for the next two weeks)
 
-♣ Backlog2: Analyze the credit behavior from Credit Bureau amon different segments of the population –4 points (planned for the next two weeks)
+♣ Backlog2: Analyze the credit behavior from Credit Bureau among different segments of the population –4 points (planned for the next two weeks)
 
 ♣ Backlog3: Analyze the previous loan applications of the customers –4 points 
 
 ♣ Backlog4: Compare the customers based on their social surrounding data –2 points
 
-o **Epic2**: Based on their background, telco and transaction information with other financial institutions, customers can be classified into two groups: with payment difficulty and without payment difficulty. 
+o **Epic2**: Classify customers into two groups: Based on their background, telco and transaction information in other financial institutions, customers can be classified into two groups: with payment difficulty and without payment difficulty. 
 
 ♣ Backlog1: Understand, clean and merge different datasets –4 points (planned for the next two weeks)
 
@@ -181,5 +181,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5Mjg4MTgxMTgsNjMwMDkzMTcyXX0=
+eyJoaXN0b3J5IjpbMTgyMjczNDEyNiw2MzAwOTMxNzJdfQ==
 -->
