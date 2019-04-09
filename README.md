@@ -49,13 +49,13 @@ o **Epic2**: Based on their background, telco and transaction information in oth
 
 ♣ *Backlog4*: Identify the features having strong predictive power –1 points
 
-♣ Backlog5: Build classification model to predict whether a customer will have late payment behavior –4 points
+♣ *Backlog5*: Build classification model to predict whether a customer will have late payment behavior –4 points
 
-♣ Backlog6: Choose appropriate hyper-parameters considering both model complexity and model performance –4 points
+♣ *Backlog6*: Choose appropriate hyper-parameters considering both model complexity and model performance –4 points
 
-♣ Backlog7: Adjust classification threshold based on the risk preference of the bank –2 points
+♣ *Backlog7*: Adjust classification threshold based on the risk preference of the bank –2 points
 
-♣ Icebox1: Calculate the expected return if the bank grants a loan with the customer
+♣ *Icebox1*: Calculate the expected return if the bank grants a loan with the customer
 
 ## Repo structure 
 
@@ -182,5 +182,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTU2MTY3NzYsNjA1NTk4MjM0XX0=
+eyJoaXN0b3J5IjpbMTk0OTU0ODQ3Nl19
 -->
