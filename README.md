@@ -21,7 +21,7 @@
 
 **Vision**: The bank struggles to target customers with insufficient or non-existent credit histories and has a hard time to decide whether to grant loans to those customers. This project will help the bank evaluate the repayment ability of those “underserved” customers, expand the loan servicing and generate more revenue.
 
-**Mission**: The bank struggles to target customers with insufficient or non-existent credit histories and has a hard time to decide whether to grant loans to those customers. This project will help the bank evaluate the repayment ability of those “underserved” customers, expand the loan servicing and generate more revenue.
+**Mission**: Profiling of customers who are likely to default will be provided to help the bank filter out high-risk customers in the first stage. The bank will also be able to classify a new customer into the category of “with payment difficult” and “without payment difficult” to decide if they want to grant loans to the customer.
 
 **Success criteria**: AUC, Sensitivity and Specificity of test data will be applied to measure the performance of the model. Considering the available models in the market, we will set the minimum value of test AUC as 0.70 for success.
 
@@ -181,5 +181,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4ODQ5MTA4OV19
+eyJoaXN0b3J5IjpbMTI4NjA2MzAwOF19
 -->
