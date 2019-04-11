@@ -59,6 +59,9 @@ o **Epic2**: Based on their background, credit and transaction information in ot
 
 ♣ *Icebox2*: Calculate the expected return if the bank grants a loan with the customer
 
+
+o **Epic3**: Launch and customer profiling and prediction functiona
+
 ## Repo structure 
 
 ```
@@ -184,5 +187,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNTIzNTY1MTksMTU2NDc2OTM5N119
+eyJoaXN0b3J5IjpbLTUxOTU0MDI1NywxNTY0NzY5Mzk3XX0=
 -->
