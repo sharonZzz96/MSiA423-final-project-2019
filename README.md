@@ -62,8 +62,9 @@ o **Epic2**: Based on their background, credit and transaction information in ot
 
 o **Epic3**: Launch the customer profiling and prediction functionalities on a user-friendly website which can be used and maintained easily.
 
-♣ *Icebox1*:  
-Enable the app to access the data easily 
+♣ *Icebox1*:  Have all the app functionality on the website
+
+♣ *Icebox2*: Enable the app to access the data easily 
 
 
 
@@ -192,5 +193,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MDk5OTY0MTIsMTU2NDc2OTM5N119
+eyJoaXN0b3J5IjpbLTE4NTg1NTg4NCwxNTY0NzY5Mzk3XX0=
 -->
