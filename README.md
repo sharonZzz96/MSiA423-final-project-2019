@@ -21,9 +21,9 @@
 
 **Vision**: The bank struggles to target customers with insufficient or non-existent credit histories and has a hard time to decide whether to grant loans to those customers. This project will help the bank evaluate the repayment ability of those “underserved” customers, expand the loan servicing and generate more revenue.
 
-**Mission**: Profiling of customers who are likely to default will be provided to help the bank filter out high-risk customers in the first stage. The bank will also be able to classify a new customer into the category of “with payment difficult” and “without payment difficult” to decide if they want to grant loans to the customer. The dataset used to train the classification model contains personal background,  300,000 applicants
+**Mission**: Profiling of customers who are likely to default will be provided to help the bank filter out high-risk customers in the first stage. The bank will also be able to classify a new customer into the category of “with payment difficult” and “without payment difficult” to decide if they want to grant loans to the customer. The dataset used to train the classification model contains personal background, previous credits and loan application with other institutions of approximately 300,000 applicants. 
 
-**Success criteria**: 1). AUC, Sensitivity and Specificity of test data will be applied to measure the performance of the model. Considering the available models in the market, we will set the minimum value of test AUC as 0.70 for success. 2). Whether the additional revenue from lending to those underserved customers reaches the finance goal of the bank (e.g. less than 2% default risk, generating more than 1 million revenue from those customers) will be used to evaluate the business outcome.
+**Success criteria**: 1). AUC, Sensitivity and Specificity of test data will be applied to measure the performance of the model. Considering the available models in the market whose AUC is betwee, we will set the minimum value of test AUC as 0.70 for success. 2). Whether the additional revenue from lending to those underserved customers reaches the finance goal of the bank (e.g. less than 2% default risk, generating more than 1 million revenue from those customers) will be used to evaluate the business outcome.
 
 ## Backlog
 **Themes**: There are distinct types of unbanked customers. Some of them have repayment capability and can contribute to the reliable source of income to the bank, and therefore not providing loan servicing for all of them will be a loss to the bank. Through this project with the customer profiling and classification model, the bank will be able to identify high-quality customers with insufficient credit history. The bank can establish positive and safe loaning relationship with them, generate higher revenue and have more business opportunity. 
@@ -182,5 +182,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzI4NTk5MzkwLDE5NDk1NDg0NzZdfQ==
+eyJoaXN0b3J5IjpbLTQ5NDE3NjA2MiwxOTQ5NTQ4NDc2XX0=
 -->
