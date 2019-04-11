@@ -62,9 +62,9 @@ o **Epic2**: Based on their background, credit and transaction information in ot
 
 o **Epic3**: Launch the customer profiling and prediction functionalities on a user-friendly website which can be used and maintained easily.
 
-♣ *backlog1*:  Write unit tests and have all tests passed locally
+♣ *Backlog1*:  Write unit tests and have all tests passed locally
 
-♣ *backlog2*: Export dependencies of the model
+♣ *Backlog2*: Export dependencies of the model
 
 ♣ *backlog3*: Move related data and file to AWS environment
 
@@ -202,5 +202,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzE2MDcyODk0XX0=
+eyJoaXN0b3J5IjpbLTQ1MjI5ODgxOCwzMTYwNzI4OTRdfQ==
 -->
