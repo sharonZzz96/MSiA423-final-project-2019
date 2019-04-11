@@ -66,13 +66,13 @@ o **Epic3**: Launch the customer profiling and prediction functionalities on a u
 
 ♣ *Backlog2*: Export dependencies of the model
 
-♣ *backlog3*: Move related data and file to AWS environment
+♣ *Backlog3*: Move related data and file to AWS environment
 
-♣ *backlog4*: Write necessary backend structures using Flask
+♣ *Backlog4*: Write necessary backend structures using Flask
 
-♣ *backlog5*: Design frontend user interface
+♣ *Backlog5*: Design frontend user interface
 
-♣ *backlog6*: Document every file clearly
+♣ *Backlog6*: Document every file clearly
 
 
 
@@ -202,5 +202,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ1MjI5ODgxOCwzMTYwNzI4OTRdfQ==
+eyJoaXN0b3J5IjpbMjc0OTYzMzI2XX0=
 -->
