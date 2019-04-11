@@ -62,9 +62,9 @@ o **Epic2**: Based on their background, credit and transaction information in ot
 
 o **Epic3**: Launch the customer profiling and prediction functionalities on a user-friendly website which can be used and maintained easily.
 
-♣ *Icebox1*:  Have all the app functionality on the website
+♣ *backlog1*:  Write unit tests and loggings and have all tests passed locally
 
-♣ *Icebox2*: Enable the app to access the data easily 
+♣ *backlog2*: Export dependency of the 
 
 
 
@@ -193,6 +193,6 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU5NzE2Nzk4Myw1MTQ4NjUzNDgsLTE4NT
+eyJoaXN0b3J5IjpbLTg2MzE2Mjk1Nyw1MTQ4NjUzNDgsLTE4NT
 g1NTg4NCwxNTY0NzY5Mzk3XX0=
 -->
