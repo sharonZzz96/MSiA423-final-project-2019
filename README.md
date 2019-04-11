@@ -47,7 +47,7 @@ o **Epic2**: Based on their background, credit and transaction information in ot
 
 ♣ *Backlog3*: Analyze distributions of features generated –1 points 
 
-♣ *Backlog4*: Identify the features having strong predictive power –1 points
+♣ *Backlog4*: Identify the features having strong predictive power using xgboost embedded feature importance functionality –1 points
 
 ♣ *Backlog5*: Build at least 3 classification models to predict whether a customer will have late payment behavior –4 points
 
@@ -184,5 +184,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2NDc2OTM5N119
+eyJoaXN0b3J5IjpbLTg3MzQ5MTQsMTU2NDc2OTM5N119
 -->
