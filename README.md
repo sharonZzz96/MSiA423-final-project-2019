@@ -41,11 +41,11 @@ o **Epic1**: Explore various types of customers unserved by the bank from differ
 
 o **Epic2**: Based on their background, credit and transaction information in other financial institutions, classify customers into two groups: with payment difficulty and without payment difficulty 
 
-♣ *Backlog1*: Understand, clean and merge different datasets including applicant background data,  –4 points (planned for the next two weeks)
+♣ *Backlog1*: Understand, clean and merge different datasets including applicant background data, bureau balance data, credit balance data and previous application data –4 points (planned for the next two weeks)
 
 ♣ *Backlog2*: Engineer features to describe transaction and payment behavior –2 points (planned for the next two weeks)
 
-♣ *Backlog3*: Visualize distributions of features generated –1 points 
+♣ *Backlog3*: Visualize distributions of features generated –1 points (planned for the next two weeks)
 
 ♣ *Backlog4*: Identify the features having strong predictive power using xgboost embedded feature importance functionality –1 points
 
@@ -193,6 +193,6 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzY5NjkwMzI3LDUxNDg2NTM0OCwtMTg1OD
-U1ODg0LDE1NjQ3NjkzOTddfQ==
+eyJoaXN0b3J5IjpbMTU5NzE2Nzk4Myw1MTQ4NjUzNDgsLTE4NT
+g1NTg4NCwxNTY0NzY5Mzk3XX0=
 -->
