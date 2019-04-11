@@ -36,7 +36,7 @@ o **Epic1**: Explore various types of customers unserved by the bank from differ
 
 ♣ *Backlog3*: Analyze the previous loan applications of the customers and study the correlation between previous loan application situation and late-payment behavior of future loans –4 points 
 
-♣ *Backlog4*: Compare the customers with late payment and without late payment based on their social surrounding data –2 points
+♣ *Backlog4*: Compare the customers with late payment and without late payment based on their social surrounding data (e.g. how many observations of the applicant  –2 points
 
 
 o **Epic2**: Based on their background, credit and transaction information in other financial institutions, classify customers into two groups: with payment difficulty and without payment difficulty 
@@ -193,6 +193,6 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTE0ODY1MzQ4LC0xODU4NTU4ODQsMTU2ND
-c2OTM5N119
+eyJoaXN0b3J5IjpbMTIxNTE1NjU1NCw1MTQ4NjUzNDgsLTE4NT
+g1NTg4NCwxNTY0NzY5Mzk3XX0=
 -->
