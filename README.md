@@ -55,7 +55,7 @@ o **Epic2**: Based on their background, credit and transaction information in ot
 
 ♣ *Backlog7*: Compare the performance of all classification models with their best hyper-parameter combination using cross-validation –2 points
 
-♣ *Icebox1*: Adjust classification threshold based on the risk preference of the bank (e.g. the bank can be risk-averse in one period and want to set threshold low
+♣ *Icebox1*: Adjust classification threshold based on the risk preference of the bank. For instance, the bank can be risk-averse in one period and want to set threshold low such as 0.3 so that they will not lend to customers with predicted score higher than 0.3.
 
 ♣ *Icebox2*: Calculate the expected return if the bank grants a loan with the customer
 
@@ -184,5 +184,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODg0NjI1NDczLDE5NDk1NDg0NzZdfQ==
+eyJoaXN0b3J5IjpbMTU2NDc2OTM5N119
 -->
