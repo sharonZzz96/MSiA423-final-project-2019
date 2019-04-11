@@ -61,7 +61,7 @@ o **Epic2**: Based on their background, credit and transaction information in ot
 
 
 o **Epic3**: Launch the customer profiling and prediction functionalities on a user-friendly website which can be used and maintained easily.
-
+ 
 
 
 
@@ -190,5 +190,5 @@ Run `pytest` from the command line in the main project repository.
 
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI0NjE3MDA4NCwxNTY0NzY5Mzk3XX0=
+eyJoaXN0b3J5IjpbMTA5NDc1NTQ2NCwxNTY0NzY5Mzk3XX0=
 -->
