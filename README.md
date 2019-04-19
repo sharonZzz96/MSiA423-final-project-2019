@@ -17,6 +17,8 @@
 
 <!-- tocstop -->
 
+QA partner: Tian Fu
+
 ## Project Charter 
 
 **Vision**: The bank struggles to target customers with insufficient or non-existent credit histories and has a hard time to decide whether to grant loans to those customers. This project will help the bank evaluate the repayment ability of those “underserved” customers, expand the loan servicing and generate more revenue.
