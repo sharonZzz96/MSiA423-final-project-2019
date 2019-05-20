@@ -93,8 +93,6 @@ def create_db(args,engine=None):
     return engine
 
 
-
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Create defined tables in database")
     parser.add_argument("--RDS", default="False",help="True if want to create in RDS else None")
@@ -107,21 +105,21 @@ if __name__ == "__main__":
     
 
     # create a db session
-    Session = sessionmaker(bind=engine)  
-    session = Session()
+    # Session = sessionmaker(bind=engine)  
+    # session = Session()
 
-    user1 = RiskPrediction(days_birth=10000, days_employed=5000, days_employed_perc=0.5, 
-        days_id_publish=365, days_last_phone_change=100, buro_days_credit_mean=32, 
-        buro_days_credit_enddate_mean=45, annuity_income_perc=0.8, income_credit_perc=1.5, 
-        payment_rate=0.3, instal_days_entry_payment_mean=12, instal_dbd_mean=43, 
-        instal_amt_payment_mean=3200, approved_days_decision_mean=46, prediction='Late Payment')
-    session.add(user1)
-    session.commit()
+    # user1 = RiskPrediction(days_birth=10000, days_employed=5000, days_employed_perc=0.5, 
+    #     days_id_publish=365, days_last_phone_change=100, buro_days_credit_mean=32, 
+    #     buro_days_credit_enddate_mean=45, annuity_income_perc=0.8, income_credit_perc=1.5, 
+    #     payment_rate=0.3, instal_days_entry_payment_mean=12, instal_dbd_mean=43, 
+    #     instal_amt_payment_mean=3200, approved_days_decision_mean=46, prediction='Late Payment')
+    # session.add(user1)
+    # session.commit()
 
-    logger.info("Data added")
+    # logger.info("Data added")
 
-    query = "SELECT * FROM RiskPrediction"
-    df = pd.read_sql(query, con=engine)
-    logger.info(df)
-    session.close()
+    # query = "SELECT * FROM RiskPrediction"
+    # df = pd.read_sql(query, con=engine)
+    # logger.info(df)
+    # session.close()
 

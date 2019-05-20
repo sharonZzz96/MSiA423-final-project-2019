@@ -9,6 +9,7 @@ import boto3
 s3 = boto3.client("s3")
 
 def download_data(args):
+	"""Download data from S3 bucket """
     s3.download_file(args.bucket_name, args.file_key, args.output_file_path)
 
 
