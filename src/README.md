@@ -16,9 +16,13 @@ input_file_path: local path for uploaded data
 
 bucket_name: your S3 bucket name
 
+access_key_id: aws access key id of the s3 bucket
+
+secret_access_key: aws secret access key of the s3 bucket
+
 output_file_path: output path for uploaded file on S3
 
-command to run example: 1) cd path_to_repo/src 2) python load_my_data.py --file_key data/application_train.csv --bucket_name nw-sharonzhang --output_file_path <path_to_repo>/data/application_train.csv
+command to run example: 1) cd path_to_repo/src 2) python load_my_data.py --file_key data/application_train.csv --bucket_name nw-sharonzhang --access_key_id <your_access_key> --secret_access_key<your_secret_access_key> --output_file_path <path_to_repo>/data/application_train.csv
 
 src/sql/models.py: create database
 
