@@ -24,7 +24,7 @@ logger = logging.getLogger('sql_db')
 Base = declarative_base()
 
 class RiskPrediction(Base):
-    """ Defines the data model for the table `tweet`. """
+    """ Defines the data model for the table `RiskPrediction. """
 
     __tablename__ = 'RiskPrediction'
 
