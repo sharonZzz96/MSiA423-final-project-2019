@@ -18,7 +18,7 @@ bucket_name: your S3 bucket name
 
 output_file_path: output path for uploaded file on S3
 
-command to run example: 1) cd path_to_repo/src 2) python upload_data.py --input_file_path <path you download the data>/application_train.csv --bucket_name <your S3 bucket name> --output_file_path application_train.csv
+command to run example: 1) cd path_to_repo/src 2) python upload_data.py --input_file_path <path_download_the_data>/application_train.csv --bucket_name <your_S3_bucket_name> --output_file_path application_train.csv
 
 src/sql/models.py: create database
 
