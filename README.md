@@ -1,4 +1,4 @@
-load_my_data.py and upload_data.py need to be run in AWS with the AWS credential in advance. You can clone the this repo to the AWS environment.
+load_my_data.py and upload_data.py need to be run in AWS with the AWS credential in advance. You can clone the repo to the AWS environment.
 
 src/load_my_data.py: download data from public S3 bucket
 
