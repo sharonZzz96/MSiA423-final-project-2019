@@ -22,7 +22,11 @@ secret_access_key: aws secret access key of the s3 bucket
 
 output_file_path: output path for uploaded file on S3
 
+<<<<<<< HEAD
 command to run example: 1) cd path_to_repo/src 2) python load_my_data.py --file_key data/application_train.csv --bucket_name nw-sharonzhang --access_key_id <your_access_key> --secret_access_key<your_secret_access_key> --output_file_path <path_to_repo>/data/application_train.csv
+=======
+command to run example: 1) cd path_to_repo/src 2) python upload_data.py --input_file_path <path_download_the_data>/application_train.csv --bucket_name <your_S3_bucket_name> --output_file_path application_train.csv
+>>>>>>> bceaccdd7bf4b1c1812971f1dacced452a6c15f3
 
 src/sql/models.py: create database
 

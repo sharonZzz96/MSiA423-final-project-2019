@@ -1,9 +1,4 @@
-"""
-Created on 5/11/19
 
-@author: sharon
-
-"""
 import argparse
 import boto3
 s3 = boto3.client("s3")
