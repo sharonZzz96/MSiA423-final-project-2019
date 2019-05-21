@@ -37,3 +37,6 @@ Note: created database can be checked in 'src/sql/logfile'
 
 command to run example: 1) cd path_to_repo/src/sql 2) python models.py --RDS True
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEyMTMyODY5ODBdfQ==
+-->
