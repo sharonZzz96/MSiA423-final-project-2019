@@ -5,9 +5,9 @@ QA partner: Tian Fu
 
 ## Project Charter 
 
-**Vision**: The bank struggles to target customers with insufficient or non-existent credit histories and has a hard time to decide whether to grant loans to those customers. This project will help the bank evaluate the repayment ability of those “underserved” customers, expand the loan servicing and generate more revenue.
+**Vision**: The bank struggles  target customers with insufficient or non-existent credit histories and has a hard time to decide whether to grant loans to those customers. This project will help the bank evaluate the reayment ability of those “underserved” customers, expand the loan servicing and generate more revenue.
 
-**Mission**: Profiling of customers who are likely to default will be provided to help the bank filter out high-risk customers in the first stage. The bank will also be able to classify a new customer into the category of “with payment difficult” and “without payment difficult” to decide if they want to grant loans to the customer. The dataset used to train the classification model contains personal background, previous credits and loan application with other institutions of approximately 300,000 applicants. 
+**Mission**: Profiling of customers who are likely to default will be provided to help the bank filter out high-risk customers in the first stage. The bank will also be able to classify a new customer into the category of “with payment difficult” and “without payment difficult” to decide if they want to grant loans to the customer. The dataset used to train the classification model contains personal background, previous credits and loaappicationther institutions of approximately 300,000 applicants. 
 
 **Success criteria**: 1). AUC, Sensitivity and Specificity of test data will be applied to measure the performance of the model. Considering the available models in the market whose AUCs are between 0.65-0.73, we will set the minimum value of test AUC as 0.70 for success. 2). Whether the additional revenue from lending to those underserved customers reaches the finance goal of the bank (e.g. less than 2% default risk, generating more than 1 million revenue from those customers) will be used to evaluate the business outcome.
 
@@ -153,3 +153,6 @@ Run `pytest` from the command line in the main project repository.
 Tests exist in `test/test_helpers.py`
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbMjc0OTYzMzI2XX0=
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE2MTIzMzg1MDhdfQ==
+-->
