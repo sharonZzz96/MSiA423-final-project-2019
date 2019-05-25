@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<style>
+.container h1{font-size: 45px;}
+</style>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Elsa, a multipurpose Template from Andreas Lautenschlager">
+    <meta name="author" content="Andreas Lautenschlager - www.lautenschlager.de">
+
+    <title>Safe to Loan</title>
+
+    <!-- normalize core CSS -->
+    <link href="static/css/normalize.css" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/bootstrap/css/carousel.css" rel="stylesheet">
+    <link href="static/bootstrap/fonts/glyphicons-halflings-regular.eot" rel="stylesheet">
+
+    <!-- Load jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="static/bootstrap/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <script src="static/bootstrap/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Google Fonts - Change if needed -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400italic,400,700,300,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen:400,700,300' rel='stylesheet' type='text/css'>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- Menu shrinking -->
+    <script type="text/javascript" src="static/js/menu.js"></script>
+
+    <!-- Main styles of this template -->
+    <link href="static/css/style.min.css?v=1.0.0" rel="stylesheet">
+
+    <!-- Custom CSS. Input here your changes -->
+    <link href="static/css/custom.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+    <!-- Navigation -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h1>Safe to Loan</h1>
+            </div>
+            
+        </div>
+        <!-- /.container -->
+    </div>
+
+
+
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="breadcrumb">
+                        <li>Late Payment Risk Evaluation of New Client</li>
+                        <li><a href="/view">View Clients with Low Late Payment Risk</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Late Payment Risk Evaluation of New Client</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Full Width Container  -->
+    <section class="page-section padding-30" style='margin-top: -30px'>
+        <div class="container">
+            <div class="row">
+                <!-- Content -->
+                <div class="col-md-12">
+                    
+                    <body>
+
+                    <table>
+                     </table>
+                      <h3>
+                          The Client Information
+                      </h3>
+                      <form action="/add" method="POST">
+                      <div class='block'>
+                        <label>Days since the client was born</label>
+                        <input type=number required=required min=1 size=15 name=DAYS_BIRTH placeholder="">
+                      </div> 
+                      <div class='block'>
+                        <label>Days since the client was employed</label>
+                        <input type=number required=required min=0 size=15 name=DAYS_EMPLOYED placeholder="">
+                      </div>
+                      <div class='block'>
+                        <label>Days since the client changed the identity document with which he/she applied for the loan</label>
+                        <input type=number required=required min=0 size=15 name=DAYS_ID_PUBLISH placeholder="">
+                      </div>
+                      <div class='block'>
+                        <label>Days since the client changed his/her phone number</label>
+                        <input type=number required=required min=0 size=15 name=DAYS_LAST_PHONE_CHANGE placeholder="">
+                      </div>
+                      <div class='block'>
+                        <label>Annuity in dollars</label>
+                        <input type=number required=required min=1 size=15 name=annuity placeholder="">
+                      </div>
+                      <div class='block'>
+                        <label>Total loan credit in dollars</label>
+                        <input type=number required=required min=1 size=15 name=credit placeholder="">
+                      </div>
+                      <div class='block'>
+                        <label>Yearly income in dollars</label>
+                        <input type=number required=required min=1 size=15 name=income placeholder="enter 1 if no income">
+                      </div>
+                      <div class='block'>
+                        <label>Days since the client apply for Credit Bureau credit before current application (take average days if the client has applied multiple times)</label>
+                        <input type=number required=required min=0 size=15 step=0.01 name=BURO_DAYS_CREDIT_MEAN placeholder="">
+                      </div>
+                      <div class='block'>
+                        <label>Remaining days of Credit Bureau credit at the time of application (take average days if the client has multiple credits)</label>
+                        <input type=number required=required min=0 size=15 step=0.01 name=BURO_DAYS_CREDIT_ENDDATE_MEAN placeholder="">
+                      </div>
+                      <div class='block'>
+                        <label>Days since the installments of previous credit paid actually (relative to application date of current loan) (take average days if the client has multiple installments)</label>
+                        <input type=number required=required min=0 size=15 step=0.01 name=INSTAL_DAYS_ENTRY_PAYMENT_MEAN placeholder="">
+                      </div>
+                      <div class='block'>
+                        <label>Days before due of previous installments (should-be-paid day - actually-be-paid day) (take average days if the client has multiple installments)</label>
+                        <input type=number required=required min=0 size=15 step=0.01 name=INSTAL_DBD_MEAN placeholder="">
+                      </div>
+                      <div class='block'>
+                        <label>Days since the decision about previous approved application made relative to current application (take average days if the client has multiple approved application before)</label>
+                        <input type=number required=required min=0 size=15 step=0.01 name=APPROVED_DAYS_DECISION_MEAN placeholder="">
+                      </div>
+                      <div class='block'>
+                        <label>Actual amount in dollars of what the client paid on previous credit on the installment (take average amounts if the client has multiple installments)</label>
+                        <input type=number required=required min=0 size=15 name=INSTAL_AMT_PAYMENT_MEAN placeholder="">
+                      </div>
+                      <div class='block'>
+                        <label>Actual amount in dollars of what the client paid on previous credit on the installment (take average amounts if the client has multiple installments)</label>
+                        <input type=number required=required min=0 size=15 name=INSTAL_AMT_PAYMENT_MEAN placeholder="">
+                      </div>
+
+                      <h3 style='margin-top: 30px'>
+                         Your Risk Preference
+                      </h3>
+                      <select name = "risk_level">
+                               <option value = "risk averse">risk averse</option>
+                               <option value = "risk neutral">risk neutral</option>
+                               <option value = "risk loving">risk loving</option>
+                      </select>
+                    
+                      <dl>
+                        <input type=submit value="Submit and Evaluate" style='margin-top: 30px'>
+                      </dl>
+
+                          <h3><br>Check the evaluation result of the client:</h3>
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td>{{result}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form>
+
+                </body>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Scripts -->
+    <!-- Loads Bootstrap Main JS -->
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="static/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+
+</body>
+
+</html>

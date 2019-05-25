@@ -1,0 +1,11 @@
+2019-05-19 14:25:35,145 INFO     RDS:False
+2019-05-19 14:25:35,182 INFO     database created
+2019-05-20 14:24:16,419 INFO     RDS:False
+2019-05-20 14:24:16,451 INFO     database created
+2019-05-20 14:25:26,321 INFO     RDS:False
+2019-05-20 14:25:26,349 INFO     database created
+2019-05-20 14:25:26,363 INFO     Data added
+2019-05-20 14:25:26,383 INFO        id  days_birth  ...  approved_days_decision_mean  prediction
+0   1       10000  ...                         46.0        0.01
+
+[1 rows x 16 columns]

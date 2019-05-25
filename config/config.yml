@@ -1,0 +1,55 @@
+model:
+  name: risk-prediction-model
+  author: Yueying Zhang
+  version: A1
+  description: Develop a model that classifies customers into one of two types.
+  tags:
+    - classifier
+  dependencies: requirements.txt
+load_data:
+  how: load_csvs
+  load_csvs:
+    directory: data/
+    file_names: [application_train.csv, bureau.csv, previous_application.csv, installments_payments.csv]
+generate_features:
+  choose_features: 
+    features_to_use: [[SK_ID_CURR, DAYS_BIRTH, DAYS_EMPLOYED, DAYS_ID_PUBLISH, AMT_ANNUITY, AMT_INCOME_TOTAL, AMT_CREDIT, DAYS_LAST_PHONE_CHANGE],
+    [SK_ID_CURR, DAYS_CREDIT, DAYS_CREDIT_ENDDATE],
+    [SK_ID_CURR, NAME_CONTRACT_STATUS, DAYS_DECISION],
+    [SK_ID_CURR, AMT_PAYMENT, DAYS_ENTRY_PAYMENT, DAYS_INSTALMENT]]
+    target: TARGET
+  save_features: data/features_processed.csv
+train_model:
+  method: xgboost
+  get_target:
+    target: TARGET
+  split_data:
+    train_size: 0.70
+    test_size: 0.30
+    random_state: 123
+    save_split_prefix: data/risk-data
+  choose_features_all:
+    features_to_use: [DAYS_BIRTH, DAYS_EMPLOYED, DAYS_EMPLOYED_PERC, 
+                    BURO_DAYS_CREDIT_MEAN, DAYS_ID_PUBLISH, ANNUITY_INCOME_PERC, 
+                    INSTAL_DAYS_ENTRY_PAYMENT_MEAN, INSTAL_DBD_MEAN, PAYMENT_RATE, 
+                    INCOME_CREDIT_PERC, INSTAL_AMT_PAYMENT_MEAN, APPROVED_DAYS_DECISION_MEAN, 
+                    DAYS_LAST_PHONE_CHANGE, BURO_DAYS_CREDIT_ENDDATE_MEAN]
+  parameter:
+    objective: binary:logistic
+    n_estimators: 300
+    learning_rate: 0.2
+    max_depth: 3
+  save_tmo: models/risk-prediction.pkl
+score_model:
+  path_to_tmo: models/risk-prediction.pkl
+  choose_features_all:
+    features_to_use: [DAYS_BIRTH, DAYS_EMPLOYED, DAYS_EMPLOYED_PERC, 
+                    BURO_DAYS_CREDIT_MEAN, DAYS_ID_PUBLISH, ANNUITY_INCOME_PERC, 
+                    INSTAL_DAYS_ENTRY_PAYMENT_MEAN, INSTAL_DBD_MEAN, PAYMENT_RATE, 
+                    INCOME_CREDIT_PERC, INSTAL_AMT_PAYMENT_MEAN, APPROVED_DAYS_DECISION_MEAN, 
+                    DAYS_LAST_PHONE_CHANGE, BURO_DAYS_CREDIT_ENDDATE_MEAN]
+  threshold: 0.08
+  save_scores: models/risk-test-scores.csv
+evaluate_model:
+  metrics: [auc, accuracy]
+  save_evaluation: models/model-evaluation.csv
