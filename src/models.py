@@ -24,7 +24,7 @@ logger = logging.getLogger('sql_db')
 Base = declarative_base()
 
 class RiskPrediction(Base):
-    """ Define the data model for the table `RiskPrediction`. """
+    """ Defines the data model for the table `RiskPrediction. """
 
     __tablename__ = 'RiskPrediction'
 
@@ -43,7 +43,7 @@ class RiskPrediction(Base):
     instal_dbd_mean = Column(Float, unique=False, nullable=False)
     instal_amt_payment_mean =  Column(Float, unique=False, nullable=False)
     approved_days_decision_mean =  Column(Float, unique=False, nullable=False)
-    prediction = Column(Float, unique=False, nullable=False)
+    prediction = Column(String(100), unique=False, nullable=False)
     
 
     def __repr__(self):
@@ -53,7 +53,6 @@ class RiskPrediction(Base):
 
 
 def get_engine_string(RDS = False):
-   
     if RDS:
         conn_type = "mysql+pymysql"
         user = os.environ.get("MYSQL_USER")
@@ -63,6 +62,7 @@ def get_engine_string(RDS = False):
         DATABASE_NAME = 'msia423'
         engine_string = "{}://{}:{}@{}:{}/{}". \
             format(conn_type, user, password, host, port, DATABASE_NAME)
+        # print(engine_string)
         logging.debug("engine string: %s"%engine_string)
         return  engine_string
     else:
@@ -75,9 +75,12 @@ def create_db(args,engine=None):
 
     Args:
         engine (:py:class:`sqlalchemy.engine.Engine`, default None): SQLAlchemy connection engine.
+            If None, `engine_string` must be provided.
+        engine_string (`str`, default None): String defining SQLAlchemy connection URI in the form of
+            `dialect+driver://username:password@host:port/database`. If None, `engine` must be provided.
 
     Returns:
-        engine(:py:class:`sqlalchemy.engine.Engine`)
+        None
     """
     if engine is None:
         RDS = eval(args.RDS) # evaluate string to bool
@@ -96,19 +99,36 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     engine = create_db(args)
+
+    # create engine
+    #engine = sql.create_engine(get_engine_string(RDS = False))
     
 
-    #create a db session
+    # create a db session
     Session = sessionmaker(bind=engine)  
     session = Session()
 
-    #add a record to db
-    user1 = RiskPrediction(days_birth=10000, days_employed=5000, days_employed_perc=0.5, 
-        days_id_publish=365, days_last_phone_change=100, buro_days_credit_mean=32, 
-        buro_days_credit_enddate_mean=45, annuity_income_perc=0.8, income_credit_perc=1.5, 
-        payment_rate=0.3, instal_days_entry_payment_mean=12, instal_dbd_mean=43, 
-        instal_amt_payment_mean=3200, approved_days_decision_mean=46, prediction=0.01)
+    user1 = RiskPrediction(days_birth=9296, days_employed=1968, days_employed_perc=0.2117, 
+        days_id_publish=1952, days_last_phone_change=887, buro_days_credit_mean=518, 
+        buro_days_credit_enddate_mean=207, annuity_income_perc=0.253, income_credit_perc=0.179, 
+        payment_rate=0.045, instal_days_entry_payment_mean=568, instal_dbd_mean=10.78, 
+        instal_amt_payment_mean=29638, approved_days_decision_mean=722, prediction=0.078)
     session.add(user1)
+
+    user2 = RiskPrediction(days_birth=12597, days_employed=1656, days_employed_perc=0.1315, 
+        days_id_publish=4117, days_last_phone_change=0, buro_days_credit_mean=975, 
+        buro_days_credit_enddate_mean=801, annuity_income_perc=0.270, income_credit_perc=0.190, 
+        payment_rate=0.051, instal_days_entry_payment_mean=576, instal_dbd_mean=10.60, 
+        instal_amt_payment_mean=7386, approved_days_decision_mean=656, prediction=0.162)
+    session.add(user2)
+
+    user3 = RiskPrediction(days_birth=17504, days_employed=2147, days_employed_perc=0.1227, 
+        days_id_publish=1066, days_last_phone_change=604, buro_days_credit_mean=1290, 
+        buro_days_credit_enddate_mean=1188, annuity_income_perc=0.144, income_credit_perc=0.257, 
+        payment_rate=0.037, instal_days_entry_payment_mean=289, instal_dbd_mean=9.51, 
+        instal_amt_payment_mean=29840, approved_days_decision_mean=515, prediction=0.059)
+    session.add(user3)
+
     session.commit()
 
     logger.info("Data added")

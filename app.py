@@ -90,12 +90,15 @@ def add_entry():
         threshold = 0.1
 
     # prediction
-    pred_prob = model.predict_proba(X)[:,1]
+    pred_prob = float(model.predict_proba(X)[:,1])
+
+    print(type(pred_prob))
+    print(pred_prob)
     if pred_prob > threshold:
         result = 'The client has high late payment risk based on your risk preference: ' + risk_level
     else:
         result = 'It is safe to loan based on your risk preference: ' + risk_level
-    #pred_prob2 = round(pred_prob, 2)
+
     try:
         user1 = RiskPrediction(days_birth=DAYS_BIRTH, 
             days_employed=DAYS_EMPLOYED, 
@@ -121,11 +124,12 @@ def add_entry():
         logger.warning("Not able to display evaluation, error page returned")
         return render_template('error1.html')
 
+
 @app.route('/view', methods=['GET','POST'])
 def view_client():
     try: 
         users = db.session.query(RiskPrediction.id, RiskPrediction.annuity_income_perc, 
-            RiskPrediction.payment_rate, RiskPrediction.prediction).limit(10)      
+            RiskPrediction.payment_rate, RiskPrediction.prediction).order_by(RiskPrediction.prediction)     
         return render_template('view.html', users=users)
 
     except:

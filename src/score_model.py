@@ -9,10 +9,10 @@ import datetime
 import pickle
 
 import sklearn
+import xgboost
 from sklearn.metrics import roc_auc_score
 import pandas as pd
 import numpy as np
-from lightgbm import LGBMClassifier
 
 from load_data import load_data
 from generate_features import choose_features_all, get_target
