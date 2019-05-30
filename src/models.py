@@ -66,7 +66,7 @@ def get_engine_string(RDS = False):
         logging.debug("engine string: %s"%engine_string)
         return  engine_string
     else:
-        return 'sqlite:///RiskPrediction.db' # relative path
+        return 'sqlite:///sql/RiskPrediction.db' # relative path
 
 
 

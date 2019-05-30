@@ -62,59 +62,44 @@ o **Epic3**: Launch the customer profiling and prediction functionalities on a u
 ```
 ├── README.md                         <- You are here
 │
-├── app
-│   ├── static/                       <- CSS, JS files that remain static 
-│   ├── templates/                    <- HTML (or other code) that is templated and changes based on a set of inputs
-│   ├── models.py                     <- Creates the data model for the database connected to the Flask app 
-│   ├── __init__.py                   <- Initializes the Flask app and database connection
+├── static                            <- CSS, JS files that remain static 
+│
+├── templates						  <- HTML (or other code) that is templated and changes based on a set of inputs
 │
 ├── config                            <- Directory for yaml configuration files for model training, scoring, etc
 │   ├── logging/                      <- Configuration files for python loggers
 │
-├── data                              <- Folder that contains data used or generated. Only the external/ and sample/ subdirectories are tracked by git. 
-│   ├── archive/                      <- Place to put archive data is no longer usabled. Not synced with git. 
-│   ├── external/                     <- External data sources, will be synced with git
-│   ├── sample/                       <- Sample data used for code development and testing, will be synced with git
-│
-├── docs                              <- A default Sphinx project; see sphinx-doc.org for details.
-│
-├── figures                           <- Generated graphics and figures to be used in reporting.
+├── data                              <- Folder that contains data used or generated 
 │
 ├── models                            <- Trained model objects (TMOs), model predictions, and/or model summaries
-│   ├── archive                       <- No longer current models. This directory is included in the .gitignore and is not tracked by git
-│
+│   
 ├── notebooks
-│   ├── develop                       <- Current notebooks being used in development.
-│   ├── deliver                       <- Notebooks shared with others. 
-│   ├── archive                       <- Develop notebooks no longer being used.
-│   ├── template.ipynb                <- Template notebook for analysis with useful imports and helper functions. 
+│   ├── develop                       <- Current notebooks being used in development
+│   ├── deliver                       <- Notebooks shared with others
+│   ├── archive                       <- Develop notebooks no longer being used
 │
-├── src                               <- Source data for the project 
-│   ├── archive/                      <- No longer current scripts.
-│   ├── helpers/                      <- Helper scripts used in main src files 
-│   ├── sql/                          <- SQL source code
-│   ├── add_songs.py                  <- Script for creating a (temporary) MySQL database and adding songs to it 
-│   ├── ingest_data.py                <- Script for ingesting data from different sources 
+├── src                               <- Source code for the project 
+│   ├── sql/                          <- SQL database and log file
+│   ├── load_my_data.py               <- Script for downloading the raw data from a pubic S3 bucket 
+│   ├── upload_data.py                <- Script for uploading the downloaded data to your own S3 bucket
+│   ├── models.py                     <- Script for creating the sql database
+│   ├── load_data.py                  <- Script for loading the data from local
 │   ├── generate_features.py          <- Script for cleaning and transforming data and generating features used for use in training and scoring.
 │   ├── train_model.py                <- Script for training machine learning model(s)
 │   ├── score_model.py                <- Script for scoring new predictions using a trained model.
-│   ├── postprocess.py                <- Script for postprocessing predictions and model results
 │   ├── evaluate_model.py             <- Script for evaluating model performance 
-│
-├── test                              <- Files necessary for running model tests (see documentation below) 
-├── run.py                            <- Simplifies the execution of one or more of the src scripts 
+│   ├── test.py                       <- Script for unit testing of some functions
+│   
+├── test                              <- Files necessary for running unit tests 
 ├── app.py                            <- Flask wrapper for running the model 
 ├── config.py                         <- Configuration file for Flask app
 ├── requirements.txt                  <- Python package dependencies 
+├── Makefile                          <- makefile for reproducing the project
 ```
-This project structure was partially influenced by the [Cookiecutter Data Science project](https://drivendata.github.io/cookiecutter-data-science/).
-## Documentation
- 
-* Open up `docs/build/html/index.html` to see Sphinx documentation docs. 
-* See `docs/README.md` for keeping docs up to date with additions to the repository.
+
 ## Running the application 
 ### 1. Set up environment 
-The `requirements.txt` file contains the packages required to run the model code. An environment can be set up in two ways. See bottom of README for exploratory data analysis environment setup. 
+The `requirements.txt` file contains the packages required to run the model code. An environment can be set up in two ways. 
 #### With `virtualenv`
 ```bash
 pip install virtualenv
@@ -128,31 +113,35 @@ conda create -n pennylane python=3.7
 conda activate pennylane
 pip install -r requirements.txt
 ```
+
 ### 2. Configure Flask app 
 `config.py` holds the configurations for the Flask app. It includes the following configurations:
 ```python
 DEBUG = True  # Keep True for debugging, change to False when moving to production 
 LOGGING_CONFIG = "config/logging/local.conf"  # Path to file that configures Python logger
 PORT = 3002  # What port to expose app on 
-SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/tracks.db'  # URI for database that contains tracks
+SQLALCHEMY_DATABASE_URI = 'sqlite:///src/sql/RiskPrediction.db'  # URI for database that contains tracks
 ```
+
 ### 3. Initialize the database 
-To create the database in the location configured in `config.py` with one initial song, run: 
-`python run.py create --artist=<ARTIST> --title=<TITLE> --album=<ALBUM>`
-To add additional songs:
-`python run.py ingest --artist=<ARTIST> --title=<TITLE> --album=<ALBUM>`
-### 4. Run the application 
- 
+To create the database in the location configured in `config.py`, cd to path_to_repo/src, run:
+ ```bash
+ python models.py
+ ```
+
+### 4. Run the application
+cd to path_to_repo, run: 
  ```bash
  python app.py 
  ```
+
 ### 5. Interact with the application 
-Go to [http://127.0.0.1:3000/]( http://127.0.0.1:3000/) to interact with the current version of hte app. 
+Go to http://127.0.0.1:3002/ to interact with the current version of hte app. 
+
+
 ## Testing 
-Run `pytest` from the command line in the main project repository. 
-Tests exist in `test/test_helpers.py`
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMjc0OTYzMzI2XX0=
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTIzMzg1MDhdfQ==
--->
+Run `make test` from the command line in the main project repository. 
+Tests exist in `src/test.py`
+
+## Reproducing the project
+Details can be refered to README in src

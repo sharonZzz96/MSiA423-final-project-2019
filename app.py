@@ -100,20 +100,20 @@ def add_entry():
         result = 'It is safe to loan based on your risk preference: ' + risk_level
 
     try:
-        user1 = RiskPrediction(days_birth=DAYS_BIRTH, 
-            days_employed=DAYS_EMPLOYED, 
+        user1 = RiskPrediction(days_birth=-1*DAYS_BIRTH, 
+            days_employed=-1*DAYS_EMPLOYED, 
             days_employed_perc=DAYS_EMPLOYED_PERC,
-            days_id_publish=DAYS_ID_PUBLISH,
-            days_last_phone_change=DAYS_LAST_PHONE_CHANGE,
-            buro_days_credit_mean=BURO_DAYS_CREDIT_MEAN,
+            days_id_publish=-1*DAYS_ID_PUBLISH,
+            days_last_phone_change=-1*DAYS_LAST_PHONE_CHANGE,
+            buro_days_credit_mean=-1*BURO_DAYS_CREDIT_MEAN,
             buro_days_credit_enddate_mean=BURO_DAYS_CREDIT_ENDDATE_MEAN,
             annuity_income_perc=ANNUITY_INCOME_PERC,
             income_credit_perc=INCOME_CREDIT_PERC,
             payment_rate=PAYMENT_RATE,
-            instal_days_entry_payment_mean=INSTAL_DAYS_ENTRY_PAYMENT_MEAN,
+            instal_days_entry_payment_mean=-1*INSTAL_DAYS_ENTRY_PAYMENT_MEAN,
             instal_dbd_mean=INSTAL_DBD_MEAN,
             instal_amt_payment_mean=INSTAL_AMT_PAYMENT_MEAN,
-            approved_days_decision_mean=APPROVED_DAYS_DECISION_MEAN,
+            approved_days_decision_mean=-1*APPROVED_DAYS_DECISION_MEAN,
             prediction=pred_prob)
         db.session.add(user1)
         db.session.commit()

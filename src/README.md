@@ -10,6 +10,7 @@ output_file_path: output path for downloaded data
 
 command to run example: 1) cd path_to_repo/src 2) python load_my_data.py --file_key data/application_train.csv --bucket_name nw-sharonzhang --output_file_path <path_to_repo>/data/application_train.csv
 
+
 src/upload_data.py: upload data to your own S3 bucket
 
 input_file_path: local path for uploaded data
@@ -24,9 +25,19 @@ output_file_path: output path for uploaded file on S3
 
 command to run example: 1) cd path_to_repo/src 2) python load_my_data.py --file_key data/application_train.csv --bucket_name nw-sharonzhang --access_key_id <your_access_key> --secret_access_key<your_secret_access_key> --output_file_path <path_to_repo>/data/application_train.csv
 
-src/sql/models.py: create database
+
+src/models.py: create database
 
 RDS True if you want to create database in RDS else None.
 Note: created database can be checked in 'src/sql/logfile'
 
 command to run example: 1) cd path_to_repo/src/sql 2) python models.py --RDS True
+
+
+To reproduce the project (make sure you have all the raw data downloaded from your S3 to the local repo data folder):
+1. cd to path_to_repo
+2. make pennylane-env/bin/activate    
+3. source pennylane-env/bin/activate
+4. make all
+
+
