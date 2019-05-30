@@ -25,9 +25,10 @@ def score_model(df, path_to_tmo, threshold, save_scores=None, **kwargs):
     Args:
         df (:py:class:`pandas.DataFrame`): a dataframe containing all selected features used in training
         path_to_tmo (str): path to the saved model
+        threshold (float): threshold used in classificaiton model
         save_scores (str, optional): path to save the predicted score
     Returns:
-        y_predicted (:py:class:`pandas.DataFrame`): a dataframe containing predicted class and probability
+        result (:py:class:`pandas.DataFrame`): a dataframe containing predicted class and probability
     """
 
     # load the model

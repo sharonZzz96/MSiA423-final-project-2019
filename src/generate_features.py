@@ -14,14 +14,13 @@ logger = logging.getLogger(__name__)
 
 
 def choose_features(df1, df2, df3, df4, features_to_use=None, target=None, **kwargs):
-    """Reduces the dataset to the features_to_use. Will keep the target if provided.
+    """Reduces each dataset to the features_to_use.
     Args:
-        df (:py:class:`pandas.DataFrame`): DataFrame containing the features
-        features_to_use (:obj:`list`): List of columnms to extract from the dataset to be features
+        df1, df2, df3, df4 (:py:class:`pandas.DataFrame`): DataFrames containing the features
+        features_to_use (:obj:`list`, optional): List of columnms to extract from the dataset to be features
         target (str, optional): If given, will include the target column in the output dataset as well.
-        **kwargs:
     Returns:
-        X (:py:class:`pandas.DataFrame`): DataFrame containing extracted features (and target, it applicable)
+        X1, X2, X3, X4 (:py:class:`pandas.DataFrame`): DataFrames containing extracted features (and target, it applicable)
     """
 
     logger.debug("Choosing features")
@@ -94,10 +93,10 @@ def choose_features(df1, df2, df3, df4, features_to_use=None, target=None, **kwa
 
 
 def choose_features_all(df, features_to_use=None, target=None, **kwargs):
-    """Reduces the dataset to the features_to_use. Will keep the target if provided.
+    """Reduces a combined dataset to the features_to_use. Will keep the target if provided.
     Args:
         df (:py:class:`pandas.DataFrame`): DataFrame containing the features
-        features_to_use (:obj:`list`): List of columnms to extract from the dataset to be features
+        features_to_use (:obj:`list`, optional): List of columnms to extract from the dataset to be features
         target (str, optional): If given, will include the target column in the output dataset as well.
         **kwargs:
     Returns:
@@ -145,20 +144,14 @@ def get_target(df, target, save_path=None, **kwargs):
 
 
 def generate_features(X1, X2, X3, X4, save_features=None, **kwargs):
-    """
+    """Generate features for each dataset
     Args:
-        df (:py:class:`pandas.DataFrame`): DataFrame containing the data to be transformed into features.
+        X1,X2,X3,X4 (:py:class:`pandas.DataFrame`): DataFrames containing the data to be transformed into features.
         save_features (str, optional): If given, the feature set will be saved to this path.
-        **kwargs: Should contain the arguments for each transformation to be performed on the data, `df`.
-            This function assumes each kwarg given except "choose_features" and "get_target" are functions in this file
-            that should be evaluated.
     Returns:
-        df (py:class:`pandas.DataFrame`): dataframe only containing selected features and transformed features
+        df (py:class:`pandas.DataFrame`): A combined dataframe only containing selected features and transformed features
     """
 
-    # Evaluates each function corresponding to a key in `kwargs` and using the key's values as parameters
-    # for that function. The functions "choose_features" and "get_target" are not evaluated until after
-    # this step.
     choose_features_kwargs = kwargs["choose_features"]
     df1, df2, df3, df4 = choose_features(X1, X2, X3, X4, **choose_features_kwargs)
 

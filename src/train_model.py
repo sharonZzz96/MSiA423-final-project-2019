@@ -7,7 +7,6 @@ import pandas as pd
 import sklearn
 from sklearn.metrics import roc_auc_score
 import yaml
-#from lightgbm import LGBMClassifier
 import xgboost
 
 from generate_features import choose_features_all, get_target
@@ -87,13 +86,13 @@ def split_data(X, y, train_size=1, test_size=0, random_state=123, save_split_pre
 
 
 def train_model(df, method=None, save_tmo=None, **kwargs):
-    """Train a logistic regression model
+    """Train a xgboost classification model
     Args:
         df (:py:class:`pandas.DataFrame`): a dataframe containing all data
         method (str, optional): model name
         save_tmo (str, optional): path to save the model
     Returns:
-        model (obj): a logistic regression model
+        model (obj): a xgboost classification model
     """
 
     assert method in methods.keys()  # `methods` defined at top of file, possible methods for training

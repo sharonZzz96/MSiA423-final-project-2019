@@ -13,15 +13,14 @@ import numpy as np
 logger = logging.getLogger(__name__)
 
 
-def load_csvs(file_names=None, directory=None, **kwargs):
-    """Loads multiple CSVs into a single Pandas dataframe.
-    Given either a directory name (which can be local or an s3 bucket prefix) or a list of CSV files, this function
-    will load all CSVs into a single Pandas DataFrame. It assumes the same schema exists across all CSVs.
+def load_csvs(file_names, directory, **kwargs):
+    """Loads multiple CSVs into multiple Pandas dataframes.
     
     Args:
-        file_names (list of str, default=None): List of files to load. If None, `directory` should be given. 
-        directory (str, default=None): Directory containing files to be loaded. If None, `filenames` should be given.
-    Returns: Single dataframe with data from all files loaded
+        file_names (list of str): List of files to load
+        directory (str): Directory containing files to be loaded. 
+    Returns: 
+        df1, df2, df3, df4 (:py:class:`pandas.DataFrame`): Four dataframes with data from the files loaded
     """
 
     # Get list of files
@@ -41,11 +40,11 @@ def load_csvs(file_names=None, directory=None, **kwargs):
 
 
 def load_data(config):
-    """Load data from url and save it to csv
+    """Load data from csvs
     Args:
         config (dictionary): a configuration dictionary of load_data
     Returns:
-        df (:py:class:`pandas.DataFrame`): a pandas dataframe containing all data
+        df1, df2, df3, df4 (:py:class:`pandas.DataFrame`): Four dataframes with data from the files loaded
     """
     how = config["how"].lower()
 
@@ -63,9 +62,8 @@ def load_data(config):
 def run_loading(args):
     """Loads config and executes load data set
     Args:
-        args: From argparse, should contain args.config and optionally, args.save
+        args: From argparse, should contain args.config
             args.config (str): Path to yaml file with load_data as a top level key containing relevant configurations
-            args.save (str): Optional. If given, resulting dataframe will be saved to this location.
     Returns: None
     """
     with open(args.config, "r") as f:
