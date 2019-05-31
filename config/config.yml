@@ -7,10 +7,11 @@ model:
     - classifier
   dependencies: requirements.txt
 load_data:
-  how: load_csvs
-  load_csvs:
-    directory: data/
-    file_names: [application_train.csv, bureau.csv, previous_application.csv, installments_payments.csv]
+  how: load_from_s3
+  load_from_s3:
+    sourceurl: https://nw-sharonzhang-public-data.s3.us-east-2.amazonaws.com/
+    filenames: [application_train.csv, bureau.csv, previous_application.csv, installments_payments.csv]
+    save_path: data/
 generate_features:
   choose_features: 
     features_to_use: [[SK_ID_CURR, DAYS_BIRTH, DAYS_EMPLOYED, DAYS_ID_PUBLISH, AMT_ANNUITY, AMT_INCOME_TOTAL, AMT_CREDIT, DAYS_LAST_PHONE_CHANGE],

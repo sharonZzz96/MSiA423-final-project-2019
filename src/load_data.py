@@ -8,39 +8,39 @@ import boto3
 import yaml
 import pandas as pd
 import numpy as np
+import requests
 
 
 logger = logging.getLogger(__name__)
 
 
-def load_csvs(file_names, directory, **kwargs):
-    """Loads multiple CSVs into multiple Pandas dataframes.
+def load_from_s3(sourceurl, filenames, save_path, **kwargs):
+    """Download multiple CSVs from public S3, save to local, and load into multiple Pandas dataframes.
     
     Args:
-        file_names (list of str): List of files to load
-        directory (str): Directory containing files to be loaded. 
+        sourceurl (str): s3 bucket object url
+        filenames (list): list containting the file names
+        save_path (str): path to save the downloaded files
     Returns: 
         df1, df2, df3, df4 (:py:class:`pandas.DataFrame`): Four dataframes with data from the files loaded
     """
 
-    # Get list of files
-    if file_names is None or directory is None:
-        raise ValueError("filenames and directory must be given")
-    elif len(file_names) != 4:
-        raise ValueError("number of files to be used is wrong, need 4 files")
-    else:
-        subpath = os.getcwd()
-        df1 = pd.read_csv(subpath+'/'+directory+file_names[0])
-        df2 = pd.read_csv(subpath+'/'+directory+file_names[1])
-        df3 = pd.read_csv(subpath+'/'+directory+file_names[2])
-        df4 = pd.read_csv(subpath+'/'+directory+file_names[3])
-        logger.info('4 files all loaded')
+    for file in filenames:
+        r = requests.get(sourceurl+file)
+        open(save_path+file, 'wb').write(r.content)
+
+    df1 = pd.read_csv(save_path+filenames[0])
+    df2 = pd.read_csv(save_path+filenames[1])
+    df3 = pd.read_csv(save_path+filenames[2])
+    df4 = pd.read_csv(save_path+filenames[3])
+
+    logger.info('4 files all loaded')
 
     return df1, df2, df3, df4
 
 
 def load_data(config):
-    """Load data from csvs
+    """Load data from s3
     Args:
         config (dictionary): a configuration dictionary of load_data
     Returns:
@@ -49,14 +49,14 @@ def load_data(config):
     how = config["how"].lower()
 
     # load url
-    if how == "load_csvs":
-        if "load_csvs" not in config:
-            raise ValueError("'how' given as 'load_csvs' but 'load_csvs' not in configuration")
+    if how == "load_from_s3":
+        if "load_from_s3" not in config:
+            raise ValueError("'how' given as 'load_from_s3' but 'load_from_s3 not in configuration")
         else:
-            df1, df2, df3, df4 = load_csvs(**config["load_csvs"])
+            df1, df2, df3, df4 = load_from_s3(**config["load_from_s3"])
             return df1, df2, df3, df4
     else:
-        raise ValueError("Options for 'how' is 'load_csvs' but %s was given" % how)
+        raise ValueError("Options for 'how' is 'load_from_s3' but %s was given" % how)
 
 
 def run_loading(args):

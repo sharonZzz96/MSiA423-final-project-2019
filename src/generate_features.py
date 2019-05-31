@@ -155,8 +155,6 @@ def generate_features(X1, X2, X3, X4, save_features=None, **kwargs):
     choose_features_kwargs = kwargs["choose_features"]
     df1, df2, df3, df4 = choose_features(X1, X2, X3, X4, **choose_features_kwargs)
 
-    print(list(df3.columns.values))
-
     # replace DAYS_EMPLOYED: 365243 -> nan
     df1['DAYS_EMPLOYED'].replace(365243, np.nan, inplace= True)
     # generate new features for application df
