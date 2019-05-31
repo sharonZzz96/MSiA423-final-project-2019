@@ -80,10 +80,9 @@ o **Epic3**: Launch the customer profiling and prediction functionalities on a u
 │
 ├── src                               <- Source code for the project 
 │   ├── sql/                          <- SQL database and log file
-│   ├── load_my_data.py               <- Script for downloading the raw data from a pubic S3 bucket 
 │   ├── upload_data.py                <- Script for uploading the downloaded data to your own S3 bucket
 │   ├── models.py                     <- Script for creating the sql database
-│   ├── load_data.py                  <- Script for loading the data from local
+│   ├── load_data.py                  <- Script for downloading data from public S3 to local and loading the data from local
 │   ├── generate_features.py          <- Script for cleaning and transforming data and generating features used for use in training and scoring.
 │   ├── train_model.py                <- Script for training machine learning model(s)
 │   ├── score_model.py                <- Script for scoring new predictions using a trained model.
