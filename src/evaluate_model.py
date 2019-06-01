@@ -8,6 +8,7 @@ import datetime
 
 import sklearn
 import pandas as pd
+pd.options.mode.chained_assignment = None
 import numpy as np
 
 from sklearn import metrics
@@ -57,7 +58,6 @@ def run_evaluation(args):
         df = pd.read_csv(args.input)
     elif "train_model" in config and "split_data" in config["train_model"] and "save_split_prefix" in config["train_model"]["split_data"]:
         df = pd.read_csv(config["train_model"]["split_data"]["save_split_prefix"]+ "-test-targets.csv")
-        print('true' + str(df.shape))
         logger.info("test target loaded")
     else:
         raise ValueError("Path to CSV for input data must be provided through --input or "
@@ -65,7 +65,6 @@ def run_evaluation(args):
 
     if "score_model" in config and "save_scores" in config["score_model"]:
         y_predicted = pd.read_csv(config["score_model"]["save_scores"])
-        print('predict' + str(y_predicted.shape))
         logger.info("test predict loaded")
     else:
         raise ValueError("'score_model' configuration mush exist in config file")

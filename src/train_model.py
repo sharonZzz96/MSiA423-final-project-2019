@@ -4,15 +4,16 @@ import pickle
 
 import numpy as np
 import pandas as pd
+pd.options.mode.chained_assignment = None
 import sklearn
 from sklearn.metrics import roc_auc_score
 import yaml
 import xgboost
 
+
 from generate_features import choose_features_all, get_target
 
 logger = logging.getLogger(__name__)
-
 methods = dict(xgboost=xgboost.XGBClassifier)
 
 
@@ -94,8 +95,6 @@ def train_model(df, method=None, save_tmo=None, **kwargs):
     Returns:
         model (obj): a xgboost classification model
     """
-
-    assert method in methods.keys()  # `methods` defined at top of file, possible methods for training
 
     # If "get_target" in the config file under "train_model", will get the target data for supervised learning
     # Otherwise y = None and the model must be unsupervised.

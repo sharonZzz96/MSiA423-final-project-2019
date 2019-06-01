@@ -3,8 +3,10 @@ import numpy as np
 import os
 import sklearn
 import sklearn.metrics
+import xgboost
 import generate_features 
 import train_model
+import score_model
 import evaluate_model
 
 
@@ -57,6 +59,35 @@ def test_split_data():
 	ratio_X = X['train'].shape[0] / X['test'].shape[0]
 	ratio_y = y['train'].shape[0] / y['test'].shape[0]
 	assert ((ratio_X == 9) and (ratio_y == 9))
+
+
+def test_train_model():
+	"""Test if train_model returns a xgboost classification model """
+	path = os.getcwd()
+	df_input = pd.read_csv(path+'/test/data/test_data.csv')
+	kwarg_dic = {'method': 'xgboost',
+	'get_target': {'target': 'TARGET'}, 
+	'choose_features_all': {'features_to_use': ['DAYS_BIRTH', 'DAYS_EMPLOYED', 'DAYS_EMPLOYED_PERC', 'BURO_DAYS_CREDIT_MEAN', 'DAYS_ID_PUBLISH', 'ANNUITY_INCOME_PERC', 'INSTAL_DAYS_ENTRY_PAYMENT_MEAN', 'INSTAL_DBD_MEAN', 'PAYMENT_RATE', 'INCOME_CREDIT_PERC', 'INSTAL_AMT_PAYMENT_MEAN', 'APPROVED_DAYS_DECISION_MEAN', 'DAYS_LAST_PHONE_CHANGE', 'BURO_DAYS_CREDIT_ENDDATE_MEAN']}, 
+	'split_data': {'train_size':0.9, 'test_size':0.1},
+	'parameter': {'objective': 'binary:logistic', 'n_estimators': 300, 'learning_rate': 0.2, 'max_depth': 3}}
+	model = train_model.train_model(df_input, **kwarg_dic)
+
+	assert (str(type(model))) == "<class 'xgboost.sklearn.XGBClassifier'>"
+
+
+def test_score_model():
+	"""Test if score_model can produce predicted probability correctly from 0 to 1 """
+	path = os.getcwd()
+	df_input = pd.read_csv(path+'/test/data/test_data.csv')
+	path_to_tmo = path+'/test/model/risk-prediction-test.pkl'
+	threshold = 0.08
+	kwarg_dic ={'choose_features_all': {'features_to_use': ['DAYS_BIRTH', 'DAYS_EMPLOYED', 'DAYS_EMPLOYED_PERC', 'BURO_DAYS_CREDIT_MEAN', 'DAYS_ID_PUBLISH', 'ANNUITY_INCOME_PERC', 'INSTAL_DAYS_ENTRY_PAYMENT_MEAN', 'INSTAL_DBD_MEAN', 'PAYMENT_RATE', 'INCOME_CREDIT_PERC', 'INSTAL_AMT_PAYMENT_MEAN', 'APPROVED_DAYS_DECISION_MEAN', 'DAYS_LAST_PHONE_CHANGE', 'BURO_DAYS_CREDIT_ENDDATE_MEAN']}}
+	result = score_model.score_model(df_input, path_to_tmo, threshold, **kwarg_dic)
+	# get max and min predicted probability
+	max_prob = result['ypred_proba_test'].max()
+	min_prob = result['ypred_proba_test'].min()
+
+	assert((max_prob <= 1) and (min_prob >=0))
 
 
 def test_evaluate_model():

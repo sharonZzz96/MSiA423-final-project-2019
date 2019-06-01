@@ -6,6 +6,7 @@ import subprocess
 import re
 import boto3
 import pandas as pd
+pd.options.mode.chained_assignment = None
 import numpy as np
 
 from load_data import load_data

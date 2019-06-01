@@ -12,7 +12,9 @@ import sklearn
 import xgboost
 from sklearn.metrics import roc_auc_score
 import pandas as pd
+pd.options.mode.chained_assignment = None
 import numpy as np
+
 
 from load_data import load_data
 from generate_features import choose_features_all, get_target

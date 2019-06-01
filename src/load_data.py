@@ -7,8 +7,11 @@ import glob
 import boto3
 import yaml
 import pandas as pd
+pd.options.mode.chained_assignment = None
 import numpy as np
 import requests
+import warnings
+warnings.filterwarnings("ignore")
 
 
 logger = logging.getLogger(__name__)
