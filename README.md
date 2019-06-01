@@ -143,4 +143,12 @@ Run `make test` from the command line in the main project repository.
 Tests exist in `src/test.py`
 
 ## Reproducing the project
-Details can be refered to README in src
+cd to path_to_repo, create the virtual environment if you have not done that:
+ ```bash
+make pennylane-env/bin/activate    
+source pennylane-env/bin/activate
+ ```
+ then:
+ ```bash
+ make all
+ ```

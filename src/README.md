@@ -34,7 +34,7 @@ Note: created database can be checked in 'src/sql/logfile'
 command to run example: 1) cd path_to_repo/src/sql 2) python models.py --RDS True
 
 
-To reproduce the project (make sure you have all the raw data downloaded from your S3 to the local repo data folder):
+To reproduce the project:
 1. cd to path_to_repo
 2. make pennylane-env/bin/activate    
 3. source pennylane-env/bin/activate
