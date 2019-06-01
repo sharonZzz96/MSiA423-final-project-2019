@@ -5,7 +5,7 @@ QA partner: Tian Fu
 
 ## Project Charter 
 
-**Vision**: The bank struggles  target customers with insufficient or non-existent credit histories and has a hard time to decide whether to grant loans to those customers. This project will help the bank evaluate the reayment ability of those “underserved” customers, expand the loan servicing and generate more revenue.
+**Vision**: Banks usually struggle to target customers with insufficient or non-existent credit histories and have a hard time to decide whether to grant loans to those customers. This project will help the bank industry evaluate the repayment ability of those “underserved” customers, expand the loan servicing and generate more revenue.
 
 **Mission**: Profiling of customers who are likely to default will be provided to help the bank filter out high-risk customers in the first stage. The bank will also be able to classify a new customer into the category of “with payment difficult” and “without payment difficult” to decide if they want to grant loans to the customer. The dataset used to train the classification model contains personal background, previous credits and loan application with other institutions of approximately 300,000 applicants. 
 
