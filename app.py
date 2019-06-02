@@ -65,7 +65,7 @@ def add_entry():
     PAYMENT_RATE = annuity / credit
     INCOME_CREDIT_PERC = income / credit
 
-    path_to_tmo = 'models/risk-prediction.pkl'
+    path_to_tmo = app.config['PATH_TO_MODEL']
     with open(path_to_tmo, "rb") as f:
         model = pickle.load(f)
 

@@ -125,13 +125,21 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///src/sql/RiskPrediction.db'  # URI for datab
 ### 3. Initialize the database 
 To create the database in the location configured in `config.py`, cd to path_to_repo/src, run:
  ```bash
- python models.py
+python models.py
  ```
 
 ### 4. Run the application
-cd to path_to_repo, run: 
+cd to path_to_repo, if you want to run locally:
  ```bash
- python app.py 
+export SQLALCHEMY_DATABASE_URI='sqlite:///src/sql/RiskPrediction.db'
+ ```
+if you want to run on RDS:
+ ```bash
+export SQLALCHEMY_DATABASE_URI="{conn_type}://{user}:{password}@{host}:{port}/{DATABASE_NAME}"
+ ```
+then: 
+ ```bash
+python app.py 
  ```
 
 ### 5. Interact with the application 
@@ -139,16 +147,18 @@ Go to http://127.0.0.1:3002/ to interact with the current version of hte app.
 
 
 ## Testing 
-Run `make test` from the command line in the main project repository. 
+cd to path_to_repo, run `make test` from the command line in the main project repository. 
 Tests exist in `src/test.py`
 
-## Reproducing the project
+
+## Reproducing the project locally
 cd to path_to_repo, create the virtual environment if you have not done that:
  ```bash
 make pennylane-env/bin/activate    
 source pennylane-env/bin/activate
  ```
- then:
+then:
  ```bash
- make all
+export SQLALCHEMY_DATABASE_URI='sqlite:///src/sql/RiskPrediction.db'
+make all
  ```

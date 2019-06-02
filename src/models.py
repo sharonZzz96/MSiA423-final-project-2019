@@ -52,21 +52,27 @@ class RiskPrediction(Base):
 
 
 
-def get_engine_string(RDS = False):
-    if RDS:
-        conn_type = "mysql+pymysql"
-        user = os.environ.get("MYSQL_USER")
-        password = os.environ.get("MYSQL_PASSWORD")
-        host = os.environ.get("MYSQL_HOST")
-        port = os.environ.get("MYSQL_PORT")
-        DATABASE_NAME = 'msia423'
-        engine_string = "{}://{}:{}@{}:{}/{}". \
-            format(conn_type, user, password, host, port, DATABASE_NAME)
-        # print(engine_string)
-        logging.debug("engine string: %s"%engine_string)
-        return  engine_string
-    else:
-        return 'sqlite:///sql/RiskPrediction.db' # relative path
+def get_engine_string(conn_type="mysql+pymysql", DATABASE_NAME='msia423'):
+    """Get database engine path.
+
+    Args:
+        conn_tyep (str): name of sql connection.
+        DATABASE_NAME (str): name of the database to be used.
+
+    Returns:
+        engine_string (str): string defining SQLAlchemy connection URI.
+
+    """
+
+    user = os.environ.get("MYSQL_USER")
+    password = os.environ.get("MYSQL_PASSWORD")
+    host = os.environ.get("MYSQL_HOST")
+    port = os.environ.get("MYSQL_PORT")
+    
+    engine_string = "{}://{}:{}@{}:{}/{}".format(conn_type, user, password, host, port, DATABASE_NAME)
+
+    logging.debug("engine string: %s"%engine_string)
+    return  engine_string 
 
 
 
@@ -80,29 +86,29 @@ def create_db(args,engine=None):
             `dialect+driver://username:password@host:port/database`. If None, `engine` must be provided.
 
     Returns:
-        None
+        engine (:py:class:`sqlalchemy.engine.Engine`, default None): SQLAlchemy connection engine.
     """
     if engine is None:
-        RDS = eval(args.RDS) # evaluate string to bool
-        logger.info("RDS:%s"%RDS)
-        engine = sql.create_engine(get_engine_string(RDS = RDS))
+        if args.RDS:
+            engine_string = get_engine_string()
+        else:
+            engine_string = args.local_URI
+        logger.info("RDS:%s"%args.RDS)
+        engine = sql.create_engine(engine_string)
 
     Base.metadata.create_all(engine)
-    logging.info("database created")
+    logging.info("database created") 
 
     return engine
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Create defined tables in database")
-    parser.add_argument("--RDS", default="False",help="True if want to create in RDS else None")
+    parser.add_argument("--RDS", default=False, action="store_true", help="True if want to create in RDS else None")
+    parser.add_argument("--local_URI", default='sqlite:///../src/sql/RiskPrediction.db')
     args = parser.parse_args()
     
     engine = create_db(args)
-
-    # create engine
-    #engine = sql.create_engine(get_engine_string(RDS = False))
-    
 
     # create a db session
     Session = sessionmaker(bind=engine)  
