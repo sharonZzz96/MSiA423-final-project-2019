@@ -114,6 +114,11 @@ def train_model(df, method=None, save_tmo=None, **kwargs):
     # (from prior step, because it is not in the configuration file), then the full dataset is returned (train_size=1)
     X, y = split_data(X, y, **kwargs["split_data"])
 
+    # check input type
+    for col in X["train"].columns:
+        if X["train"][col].dtype not in [np.dtype('float64'), np.dtype('float32'), np.dtype('int64'), np.dtype('bool')]:
+            raise ValueError('Xgboost can only take numeric or boolean types')
+
     if "parameter" in kwargs:
         # Instantiates a model class for the training `method` provided
         model = methods[method](objective =kwargs['parameter']['objective'], n_estimators=kwargs['parameter']['n_estimators'], 

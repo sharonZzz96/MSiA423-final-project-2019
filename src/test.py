@@ -8,6 +8,7 @@ import generate_features
 import train_model
 import score_model
 import evaluate_model
+import pytest
 
 
 def test_choose_features_all():
@@ -75,8 +76,36 @@ def test_train_model():
 	assert (str(type(model))) == "<class 'xgboost.sklearn.XGBClassifier'>"
 
 
-def test_score_model():
+def test_train_model_input():
+	"""Test if train_model can handle invalid input type """
+	path = os.getcwd()
+	df_input = pd.read_csv(path+'/test/data/test_data_wrong.csv')
+	kwarg_dic = {'method': 'xgboost',
+	'get_target': {'target': 'TARGET'}, 
+	'choose_features_all': {'features_to_use': ['DAYS_BIRTH', 'DAYS_EMPLOYED', 'DAYS_EMPLOYED_PERC', 'BURO_DAYS_CREDIT_MEAN', 'DAYS_ID_PUBLISH', 'ANNUITY_INCOME_PERC', 'INSTAL_DAYS_ENTRY_PAYMENT_MEAN', 'INSTAL_DBD_MEAN', 'PAYMENT_RATE', 'INCOME_CREDIT_PERC', 'INSTAL_AMT_PAYMENT_MEAN', 'APPROVED_DAYS_DECISION_MEAN', 'DAYS_LAST_PHONE_CHANGE', 'BURO_DAYS_CREDIT_ENDDATE_MEAN']}, 
+	'split_data': {'train_size':0.9, 'test_size':0.1},
+	'parameter': {'objective': 'binary:logistic', 'n_estimators': 300, 'learning_rate': 0.2, 'max_depth': 3}}
+
+	with pytest.raises(ValueError) as excinfo:
+		model = train_model.train_model(df_input, **kwarg_dic)
+
+	assert str(excinfo.value) == 'Xgboost can only take numeric or boolean types'
+
+
+def test_score_model_output1():
 	"""Test if score_model can produce predicted probability correctly from 0 to 1 """
+	path = os.getcwd()
+	df_input = pd.read_csv(path+'/test/data/test_data.csv')
+	path_to_tmo = path+'/test/model/risk-prediction-test.pkl'
+	threshold = 0.08
+	kwarg_dic ={'choose_features_all': {'features_to_use': ['DAYS_BIRTH', 'DAYS_EMPLOYED', 'DAYS_EMPLOYED_PERC', 'BURO_DAYS_CREDIT_MEAN', 'DAYS_ID_PUBLISH', 'ANNUITY_INCOME_PERC', 'INSTAL_DAYS_ENTRY_PAYMENT_MEAN', 'INSTAL_DBD_MEAN', 'PAYMENT_RATE', 'INCOME_CREDIT_PERC', 'INSTAL_AMT_PAYMENT_MEAN', 'APPROVED_DAYS_DECISION_MEAN', 'DAYS_LAST_PHONE_CHANGE', 'BURO_DAYS_CREDIT_ENDDATE_MEAN']}}
+	result = score_model.score_model(df_input, path_to_tmo, threshold, **kwarg_dic)
+	
+	assert result['ypred_bin_test'].isin([0,1]).all()
+
+
+def test_score_model_output2():
+	"""Test if score_model can produce predicted category either 1 or 0 """
 	path = os.getcwd()
 	df_input = pd.read_csv(path+'/test/data/test_data.csv')
 	path_to_tmo = path+'/test/model/risk-prediction-test.pkl'
@@ -90,7 +119,29 @@ def test_score_model():
 	assert((max_prob <= 1) and (min_prob >=0))
 
 
-def test_evaluate_model():
+def test_score_model_input():
+	"""Test if train_model can handle invalid input type """
+	path = os.getcwd()
+	df_input = pd.read_csv(path+'/test/data/test_data_wrong.csv')
+	path_to_tmo = path+'/test/model/risk-prediction-test.pkl'
+	threshold = 0.08
+	kwarg_dic ={'choose_features_all': {'features_to_use': ['DAYS_BIRTH', 'DAYS_EMPLOYED', 'DAYS_EMPLOYED_PERC', 'BURO_DAYS_CREDIT_MEAN', 'DAYS_ID_PUBLISH', 'ANNUITY_INCOME_PERC', 'INSTAL_DAYS_ENTRY_PAYMENT_MEAN', 'INSTAL_DBD_MEAN', 'PAYMENT_RATE', 'INCOME_CREDIT_PERC', 'INSTAL_AMT_PAYMENT_MEAN', 'APPROVED_DAYS_DECISION_MEAN', 'DAYS_LAST_PHONE_CHANGE', 'BURO_DAYS_CREDIT_ENDDATE_MEAN']}}
+
+	with pytest.raises(ValueError) as excinfo:
+		result = score_model.score_model(df_input, path_to_tmo, threshold, **kwarg_dic)
+
+	assert str(excinfo.value) == 'Xgboost can only take numeric or boolean types'
+
+
+def test_evaluate_model_input():
+	"""Test if predicted category is 1 or 0"""
+	path = os.getcwd()
+	prediction = pd.read_csv(path+'/test/data/test_prediction.csv')
+
+	assert prediction['ypred_bin_test'].isin([0,1]).all()
+
+
+def test_evaluate_model_confusion():
 	"""Test if evaluate_model can generate correct confusion matrix"""
 	path = os.getcwd()
 	df_input = pd.read_csv(path+'/test/data/test_actual_prediction.csv')

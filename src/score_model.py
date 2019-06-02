@@ -43,6 +43,11 @@ def score_model(df, path_to_tmo, threshold, save_scores=None, **kwargs):
     else:
         X = df
 
+    # check input type
+    for col in X.columns:
+        if X[col].dtype not in [np.dtype('float64'), np.dtype('float32'), np.dtype('int64'), np.dtype('bool')]:
+            raise ValueError('Xgboost can only take numeric or boolean types')
+
     # predict probability and class label based on threshold
     ypred_proba_test = model.predict_proba(X)[:,1]
     result = pd.DataFrame(ypred_proba_test)
