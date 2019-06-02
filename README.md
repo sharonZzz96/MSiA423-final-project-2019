@@ -129,7 +129,8 @@ python models.py
  ```
 
 ### 4. Run the application
-cd to path_to_repo, if you want to run locally:
+cd to path_to_repo first
+if you want to run locally:
  ```bash
 export SQLALCHEMY_DATABASE_URI='sqlite:///src/sql/RiskPrediction.db'
  ```
