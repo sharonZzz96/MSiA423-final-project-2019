@@ -64,7 +64,7 @@ o **Epic3**: Launch the customer profiling and prediction functionalities on a u
 │
 ├── static                            <- CSS, JS files that remain static 
 │
-├── templates						  <- HTML (or other code) that is templated and changes based on a set of inputs
+├── templates						                   <- HTML (or other code) that is templated and changes based on a set of inputs
 │
 ├── config                            <- Directory for yaml configuration files for model training, scoring, etc
 │   ├── logging/                      <- Configuration files for python loggers
