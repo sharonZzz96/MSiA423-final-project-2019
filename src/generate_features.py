@@ -11,7 +11,9 @@ import numpy as np
 
 from load_data import load_data
 
-logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.DEBUG, filename="logfile_reproduce", filemode="a+",
+                        format="%(asctime)-15s %(levelname)-8s %(message)s")
+logger = logging.getLogger('reproduce_check')
 
 
 def choose_features(df1, df2, df3, df4, features_to_use=None, target=None, **kwargs):
@@ -152,9 +154,11 @@ def generate_features(X1, X2, X3, X4, save_features=None, **kwargs):
     Returns:
         df (py:class:`pandas.DataFrame`): A combined dataframe only containing selected features and transformed features
     """
-
-    choose_features_kwargs = kwargs["choose_features"]
-    df1, df2, df3, df4 = choose_features(X1, X2, X3, X4, **choose_features_kwargs)
+    if "choose_features" in kwargs:
+        choose_features_kwargs = kwargs["choose_features"]
+        df1, df2, df3, df4 = choose_features(X1, X2, X3, X4, **choose_features_kwargs)
+    else:
+        raise ValueError("'choose_features' configuration must exist in config file of generate_features")
 
     # replace DAYS_EMPLOYED: 365243 -> nan
     df1['DAYS_EMPLOYED'].replace(365243, np.nan, inplace= True)

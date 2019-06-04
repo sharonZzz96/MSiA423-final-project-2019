@@ -13,7 +13,9 @@ import numpy as np
 
 from sklearn import metrics
 
-logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.DEBUG, filename="logfile_reproduce", filemode="a+",
+                        format="%(asctime)-15s %(levelname)-8s %(message)s")
+logger = logging.getLogger("reproduce_check")
 
 
 def evaluate_model(df, y_predicted, **kwargs):
@@ -25,10 +27,11 @@ def evaluate_model(df, y_predicted, **kwargs):
         confusion_df (:py:class:`pandas.DataFrame`): a dataframe reporting confusion matrix
     """
 
+    # get the prediction columns and actual result column
     ypred_proba_test = y_predicted['ypred_proba_test']
     ypred_bin_test = y_predicted['ypred_bin_test']
-
     y_true = df.iloc[:,0]
+
     # calculate auc and accuracy if specified
     if "auc" in kwargs["metrics"]:
         auc = sklearn.metrics.roc_auc_score(df, ypred_proba_test)
@@ -44,6 +47,7 @@ def evaluate_model(df, y_predicted, **kwargs):
         index=['Actual negative','Actual positive'],
         columns=['Predicted negative', 'Predicted positive'])
     
+    # print evaluation stats
     print(confusion_df)
     print(classification_report)
 
@@ -69,11 +73,17 @@ def run_evaluation(args):
     else:
         raise ValueError("'score_model' configuration mush exist in config file")
 
-    confusion_df = evaluate_model(df, y_predicted, **config["evaluate_model"])
+    if "evaluate_model" in config:
+        confusion_df = evaluate_model(df, y_predicted, **config["evaluate_model"])
+    else:
+        raise ValueError("'evaluate_model' must exist in config file")
+
     if args.output is not None:
         confusion_df.to_csv(args.output, index=False)
+        logger.info('confusion matrix saved to %s' %args.output)
     elif "evaluate_model" in config and "save_evaluation" in config["evaluate_model"]:
         confusion_df.to_csv(config["evaluate_model"]["save_evaluation"], index=False)
+        logger.info('confusion matrix saved to %s' %config["evaluate_model"]["save_evaluation"])
     else:
         raise ValueError("Path to CSV for ouput data must be provided through --output or "
                          "'evaluate_model' configuration must exist in config file")

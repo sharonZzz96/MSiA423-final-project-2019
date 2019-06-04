@@ -19,7 +19,9 @@ import numpy as np
 from load_data import load_data
 from generate_features import choose_features_all, get_target
 
-logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.DEBUG, filename="logfile_reproduce", filemode="a+",
+                        format="%(asctime)-15s %(levelname)-8s %(message)s")
+logger = logging.getLogger('reproduce_check')
 
 
 def score_model(df, path_to_tmo, threshold, save_scores=None, **kwargs):
@@ -59,7 +61,7 @@ def score_model(df, path_to_tmo, threshold, save_scores=None, **kwargs):
     # save predicted score if specified
     if save_scores is not None:
         pd.DataFrame(result.to_csv(save_scores, index=False))
-        logger.info('prediction result saved')
+        logger.info('prediction result saved to %s' %save_scores)
 
     return result
 
@@ -79,10 +81,14 @@ def run_scoring(args):
         raise ValueError("Path to CSV for input data must be provided through --input or "
                          "'train_model' configuration must exist in config file")
 
-    result = score_model(df, **config["score_model"])
+    if "score_model" in config:
+        result = score_model(df, **config["score_model"])
+    else:
+        raise ValueError("'score_model' must exist in config file")
 
     if args.output is not None:
         pd.DataFrame(result).to_csv(args.output, index=False)
+        logger.info('prediction result saved to %s' %args.output)
 
 
 if __name__ == '__main__':

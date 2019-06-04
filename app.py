@@ -28,10 +28,8 @@ db = SQLAlchemy(app)
 
 @app.route('/')
 def index():
-    """Main view that lists songs in the database.
-    Create view into index page that uses data queried from Track database and
-    inserts it into the msiapp/templates/index.html template.
-    Returns: rendered html template
+    """Main view that evaluate new client.
+    Return: rendered index html template
     """
 
     return render_template('index.html')
@@ -40,7 +38,7 @@ def index():
 @app.route('/add', methods=['GET','POST'])
 def add_entry():
     """View that process a POST with new user input
-    :return: redirect to index page
+    Return: rendered index html template
     """
 
     # get data
@@ -65,6 +63,7 @@ def add_entry():
     PAYMENT_RATE = annuity / credit
     INCOME_CREDIT_PERC = income / credit
 
+    # load model
     path_to_tmo = app.config['PATH_TO_MODEL']
     with open(path_to_tmo, "rb") as f:
         model = pickle.load(f)
@@ -81,7 +80,7 @@ def add_entry():
         APPROVED_DAYS_DECISION_MEAN, INSTAL_DBD_MEAN, INSTAL_AMT_PAYMENT_MEAN,
         INSTAL_DAYS_ENTRY_PAYMENT_MEAN]
 
-    # risk level
+    # risk level based on user input
     if risk_level == "risk averse":
         threshold = 0.06
     elif risk_level == "risk neutral":
@@ -92,13 +91,15 @@ def add_entry():
     # prediction
     pred_prob = float(model.predict_proba(X)[:,1])
 
-    print(type(pred_prob))
-    print(pred_prob)
+    logger.info('prediction probability %s' %pred_prob)
+
+    # return message based on prediction result
     if pred_prob > threshold:
         result = 'The client has high late payment risk based on your risk preference: ' + risk_level
     else:
         result = 'It is safe to loan based on your risk preference: ' + risk_level
 
+    # add new client data to database
     try:
         user1 = RiskPrediction(days_birth=-1*DAYS_BIRTH, 
             days_employed=-1*DAYS_EMPLOYED, 
@@ -127,9 +128,13 @@ def add_entry():
 
 @app.route('/view', methods=['GET','POST'])
 def view_client():
+    """View the client data and prediction result in the database 
+    Return: rendered view html template
+    """
+    # query top 20 lowest risk client info and display
     try: 
         users = db.session.query(RiskPrediction.id, RiskPrediction.annuity_income_perc, 
-            RiskPrediction.payment_rate, RiskPrediction.prediction).order_by(RiskPrediction.prediction)     
+            RiskPrediction.payment_rate, RiskPrediction.prediction).order_by(RiskPrediction.prediction).limit(20)     
         return render_template('view.html', users=users)
 
     except:

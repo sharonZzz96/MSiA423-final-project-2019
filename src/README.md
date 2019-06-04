@@ -29,7 +29,7 @@ command to run example: 1) cd path_to_repo/src 2) python load_my_data.py --file_
 src/models.py: create database
 
 --RDS if you want to create database in RDS else None.
-Note: created database can be checked in 'src/sql/logfile'
+Note: created database can be checked in 'src/logfile'
 
 command to run example: 1) cd path_to_repo/src/sql 2) python models.py --RDS
 

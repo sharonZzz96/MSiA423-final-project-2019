@@ -88,12 +88,14 @@ o **Epic3**: Launch the customer profiling and prediction functionalities on a u
 │   ├── score_model.py                <- Script for scoring new predictions using a trained model.
 │   ├── evaluate_model.py             <- Script for evaluating model performance 
 │   ├── test.py                       <- Script for unit testing of some functions
+│   ├── logfile_db                    <- logfile for database creation
 │   
 ├── test                              <- Files necessary for running unit tests 
 ├── app.py                            <- Flask wrapper for running the model 
 ├── config.py                         <- Configuration file for Flask app
 ├── requirements.txt                  <- Python package dependencies 
 ├── Makefile                          <- makefile for reproducing the project
+├── logfile_reproduce                 <- logfile for app reproduction
 ```
 
 ## Running the application 
@@ -163,3 +165,4 @@ then:
 export SQLALCHEMY_DATABASE_URI='sqlite:///src/sql/RiskPrediction.db'
 make all
  ```
+** Due to the large data size, the data loading and feature generation may take 10-20 minutes.

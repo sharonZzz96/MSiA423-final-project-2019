@@ -14,7 +14,9 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.DEBUG, filename="logfile_reproduce", filemode="a+",
+                        format="%(asctime)-15s %(levelname)-8s %(message)s")
+logger = logging.getLogger('reproduce_check')
 
 
 def load_from_s3(sourceurl, filenames, save_path, **kwargs):

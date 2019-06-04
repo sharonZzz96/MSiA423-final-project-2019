@@ -13,7 +13,10 @@ import xgboost
 
 from generate_features import choose_features_all, get_target
 
-logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.DEBUG, filename="logfile_reproduce", filemode="a+",
+                        format="%(asctime)-15s %(levelname)-8s %(message)s")
+logger = logging.getLogger('reproduce_check')
+
 methods = dict(xgboost=xgboost.XGBClassifier)
 
 
@@ -157,7 +160,10 @@ def run_training(args):
         raise ValueError("Path to CSV for input data must be provided through --input or "
                          "'load_data' configuration must exist in config file")
 
-    tmo = train_model(df, **config["train_model"])
+    if "train_model" in config:
+        tmo = train_model(df, **config["train_model"])
+    else:
+        raise ValueError("'train_model' must be in config file")
 
     # save the model
     if args.output is not None:

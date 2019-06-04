@@ -1,56 +1,7 @@
-2019-05-19 14:25:35,145 INFO     RDS:False
-2019-05-19 14:25:35,182 INFO     database created
-2019-05-20 14:24:16,419 INFO     RDS:False
-2019-05-20 14:24:16,451 INFO     database created
-2019-05-20 14:25:26,321 INFO     RDS:False
-2019-05-20 14:25:26,349 INFO     database created
-2019-05-20 14:25:26,363 INFO     Data added
-2019-05-20 14:25:26,383 INFO        id  days_birth  ...  approved_days_decision_mean  prediction
-0   1       10000  ...                         46.0        0.01
-
-[1 rows x 16 columns]
-2019-05-26 18:56:37,100 INFO     RDS:False
-2019-05-26 18:56:37,123 INFO     database created
-2019-05-26 18:56:37,128 INFO     Data added
-2019-05-26 18:56:37,134 INFO        id  days_birth  ...  approved_days_decision_mean  prediction
-0   1       10000  ...                         46.0        0.01
-1   2       10000  ...                         46.0        0.01
-
-[2 rows x 16 columns]
-2019-05-26 19:05:33,790 INFO     RDS:False
-2019-05-26 19:05:33,815 INFO     database created
-2019-05-26 19:05:33,821 INFO     Data added
-2019-05-26 19:05:33,827 INFO        id  days_birth  ...  approved_days_decision_mean  prediction
-0   1        9296  ...                        722.0       0.078
-1   2       12597  ...                        656.0       0.162
-2   3       17504  ...                        515.0       0.059
-
-[3 rows x 16 columns]
-2019-05-30 09:16:35,872 INFO     RDS:False
-2019-05-30 09:16:35,913 INFO     database created
-2019-05-30 09:16:35,920 INFO     Data added
-2019-05-30 09:16:35,939 INFO        id  days_birth  ...  approved_days_decision_mean  prediction
-0   1        9296  ...                        722.0       0.078
-1   2       12597  ...                        656.0       0.162
-2   3       17504  ...                        515.0       0.059
-
-[3 rows x 16 columns]
-2019-06-02 14:21:59,114 INFO     RDS:False
-2019-06-02 14:21:59,133 INFO     database created
-2019-06-02 14:21:59,142 INFO     Data added
-2019-06-02 14:21:59,163 INFO        id  days_birth     ...      approved_days_decision_mean  prediction
-0   1        9296     ...                            722.0       0.078
-1   2       12597     ...                            656.0       0.162
-2   3       17504     ...                            515.0       0.059
-3   4        9296     ...                            722.0       0.078
-4   5       12597     ...                            656.0       0.162
-5   6       17504     ...                            515.0       0.059
-
-[6 rows x 16 columns]
-2019-06-02 14:25:23,078 INFO     RDS:False
-2019-06-02 14:25:23,091 INFO     database created
-2019-06-02 14:25:23,099 INFO     Data added
-2019-06-02 14:25:23,108 INFO        id  days_birth     ...      approved_days_decision_mean  prediction
+2019-06-03 19:56:04,253 INFO     RDS:False
+2019-06-03 19:56:04,271 INFO     database created
+2019-06-03 19:56:04,282 INFO     Data added
+2019-06-03 19:56:04,289 INFO        id  days_birth     ...      approved_days_decision_mean  prediction
 0   1        9296     ...                            722.0       0.078
 1   2       12597     ...                            656.0       0.162
 2   3       17504     ...                            515.0       0.059
