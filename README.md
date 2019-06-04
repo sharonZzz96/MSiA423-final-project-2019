@@ -79,7 +79,7 @@ o **Epic3**: Launch the customer profiling and prediction functionalities on a u
 │   ├── archive                       <- Develop notebooks no longer being used
 │
 ├── src                               <- Source code for the project 
-│   ├── sql/                          <- SQL database and log file
+│   ├── sql/                          <- SQL database 
 │   ├── upload_data.py                <- Script for uploading the downloaded data to your own S3 bucket
 │   ├── models.py                     <- Script for creating the sql database
 │   ├── load_data.py                  <- Script for downloading data from public S3 to local and loading the data from local
