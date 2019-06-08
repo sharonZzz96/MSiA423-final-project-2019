@@ -100,18 +100,12 @@ o **Epic3**: Launch the customer profiling and prediction functionalities on a u
 
 ## Running the application 
 ### 1. Set up environment 
-The `requirements.txt` file contains the packages required to run the model code. An environment can be set up in two ways. 
+The `requirements.txt` file contains the packages required to run the model code. An environment can be set up after you cd to the repo path. 
 #### With `virtualenv`
 ```bash
 pip install virtualenv
 virtualenv pennylane
 source pennylane/bin/activate
-pip install -r requirements.txt
-```
-#### With `conda`
-```bash
-conda create -n pennylane python=3.7
-conda activate pennylane
 pip install -r requirements.txt
 ```
 
@@ -155,7 +149,7 @@ Tests exist in `src/test.py`
 
 
 ## Reproducing the project locally
-cd to path_to_repo, create the virtual environment if you have not done that:
+cd to path_to_repo, create the virtual environment if you have not done that (can skip this part if you are already in pennylane:
  ```bash
 make pennylane-env/bin/activate    
 source pennylane-env/bin/activate
