@@ -4,7 +4,7 @@ pytest==4.0.1
 boto3==1.9.82
 pandas==0.23.4
 scikit-learn==0.20.3
-numpy == 1.16.3
+numpy == 1.22.0
 xgboost == 0.82
 flask == 1.0.2
 flask-sqlalchemy  == 2.3.2
